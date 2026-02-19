@@ -50,6 +50,8 @@ const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
   </div>
 );
 
+import dinoBlueberry from "@/assets/dino-blueberry.png";
+
 const OurStory = () => {
   return (
     <div className="mx-auto max-w-3xl px-6 py-20 md:py-32">
@@ -64,6 +66,15 @@ const OurStory = () => {
             </p>
           </section>
           {i < sections.length - 1 && <CurvedArrow flip={i % 2 === 1} />}
+          {i === 0 && (
+            <div className="flex justify-center py-4">
+              <img
+                src={dinoBlueberry}
+                alt="Cute dino eating blueberries"
+                className="w-36 md:w-44 opacity-90 drop-shadow-lg"
+              />
+            </div>
+          )}
         </div>
       ))}
     </div>
