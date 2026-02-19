@@ -52,6 +52,7 @@ const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
 
 import dinoBlueberry from "@/assets/dino-blueberry.png";
 import flowerImg from "@/assets/flower-smile.png";
+import dinoFriends from "@/assets/dino-friends.png";
 
 const OurStory = () => {
   return (
@@ -59,17 +60,35 @@ const OurStory = () => {
       {sections.map((section, i) => (
         <div key={i}>
           <section className={`text-center ${i % 2 === 0 ? "" : "md:text-right"}`}>
-            <div className={`mb-4 flex items-center gap-4 ${i === 0 ? "justify-center" : i % 2 === 0 ? "justify-center" : "md:justify-end justify-center"}`}>
-              <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                {section.heading}
-              </h2>
-              {i === 0 && (
-                <img src={dinoBlueberry} alt="Dino mascot" className="h-20 w-20 md:h-28 md:w-28 object-contain" />
-              )}
-            </div>
-            <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              {section.body}
-            </p>
+            {i === 1 ? (
+              <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
+                <img src={dinoFriends} alt="Dino friends" className="w-36 shrink-0 md:w-48" />
+                <div className="flex-1">
+                  <div className="mb-4 flex items-center justify-center gap-4 md:justify-start">
+                    <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                      {section.heading}
+                    </h2>
+                  </div>
+                  <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                    {section.body}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className={`mb-4 flex items-center gap-4 ${i === 0 ? "justify-center" : i % 2 === 0 ? "justify-center" : "md:justify-end justify-center"}`}>
+                  <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                    {section.heading}
+                  </h2>
+                  {i === 0 && (
+                    <img src={dinoBlueberry} alt="Dino mascot" className="h-20 w-20 md:h-28 md:w-28 object-contain" />
+                  )}
+                </div>
+                <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                  {section.body}
+                </p>
+              </>
+            )}
           </section>
           {i < sections.length - 1 && <CurvedArrow flip={i % 2 === 1} />}
         </div>
