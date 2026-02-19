@@ -1,28 +1,29 @@
+import dinoBlueberry from "@/assets/dino-blueberry.png";
+import dinoFriends from "@/assets/dino-friends.png";
+import dinoFlowers from "@/assets/dino-flowers.png";
+import flowerImg from "@/assets/flower-smile.png";
+
 const sections = [
   {
-    heading: "Our Story",
-    body: "Dino Initiative began as a conversation between friends who had each, at different times, struggled to find mental health support that felt accessible and judgment-free. We noticed that the resources available were often clinical, hard to navigate, or hidden behind paywalls.",
+    text: "Some struggles are invisible.",
+    large: true,
   },
   {
-    heading: "How it started",
-    body: "We believe that checking in on your mental health should be as normal as checking the weather. Everyone deserves a gentle starting point — not a diagnosis, not a prescription, just a place to pause, breathe, and find the next small step.",
+    text: "A person can be bright, active, and smiling through everyday life, while quietly carrying feelings no one else can see. Many people learn to hide their pain behind strength, to look okay even when they are hurting inside.",
   },
   {
-    heading: "What we believe",
-    body: "We're building a library of evidence-informed resources, connecting people with crisis support worldwide, and creating a community of supporters who believe mental wellness should be free and open to all. This is just the beginning.",
+    text: "It is truly devastating how many people carry silent pain while appearing strong on the outside, and how many voices go unheard simply because suffering is invisible. Dino Initiative was created in honor of every person fighting quiet battles and for those whose struggles are often unseen.",
   },
   {
-    heading: "Where we're going",
-    body: 'Why "Dino"? Because sometimes the things that feel biggest and scariest are the ones that need the most gentle attention. And because even the smallest creature can make a big difference.',
+    text: "What began as grief slowly became a promise to listen more closely, speak more openly about mental health, and create a space where no one feels alone in their struggles.",
   },
   {
-    heading: "The name",
-    body: "We're not therapists. We're not a crisis line. We're a group of people who care deeply and want to make the first step easier for everyone.",
+    text: "If this project can comfort even one person, encourage one conversation, or help someone choose to keep going, then its purpose continues through hope, kindness, and care.",
   },
 ];
 
 const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
-  <div className={`flex justify-center py-8 ${flip ? "scale-x-[-1]" : ""}`}>
+  <div className={`flex justify-center py-6 ${flip ? "scale-x-[-1]" : ""}`}>
     <svg
       width="80"
       height="120"
@@ -50,64 +51,69 @@ const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
   </div>
 );
 
-import dinoBlueberry from "@/assets/dino-blueberry.png";
-import flowerImg from "@/assets/flower-smile.png";
-import dinoFriends from "@/assets/dino-friends.png";
-import dinoFlowers from "@/assets/dino-flowers.png";
+const dinoImages = [dinoBlueberry, dinoFriends, dinoFlowers, dinoFriends, dinoBlueberry];
 
 const OurStory = () => {
   return (
     <div className="mx-auto max-w-3xl px-6 py-20 md:py-32">
+      <h1 className="mb-16 text-center text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+        Our Story
+      </h1>
+
       {sections.map((section, i) => (
         <div key={i}>
-          <section className={`text-center ${i % 2 === 0 ? "" : "md:text-right"}`}>
-            {i === 1 ? (
-              <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
-                <img src={dinoFriends} alt="Dino friends" className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28" />
-                <div className="flex-1">
-                  <div className="mb-4 flex items-center justify-center gap-4 md:justify-start">
-                    <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                      {section.heading}
-                    </h2>
-                  </div>
-                  <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                    {section.body}
-                  </p>
-                </div>
-              </div>
-            ) : i === 2 ? (
-              <div className="flex flex-col items-center gap-6 md:flex-row-reverse md:items-start">
-                <img src={dinoFlowers} alt="Dino holding flowers" className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28" />
-                <div className="flex-1">
-                  <div className="mb-4 flex items-center justify-center gap-4 md:justify-end">
-                    <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                      {section.heading}
-                    </h2>
-                  </div>
-                  <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                    {section.body}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className={`mb-4 flex items-center gap-4 ${i === 0 ? "justify-center" : i % 2 === 0 ? "justify-center" : "md:justify-end justify-center"}`}>
-                  <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                    {section.heading}
-                  </h2>
-                  {i === 0 && (
-                    <img src={dinoBlueberry} alt="Dino mascot" className="h-20 w-20 md:h-28 md:w-28 object-contain" />
-                  )}
-                </div>
-                <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                  {section.body}
-                </p>
-              </>
-            )}
+          <section className="text-center">
+            <div
+              className={`flex items-center gap-6 ${
+                i % 2 === 0
+                  ? "flex-col md:flex-row"
+                  : "flex-col md:flex-row-reverse"
+              }`}
+            >
+              <img
+                src={dinoImages[i]}
+                alt="Dino mascot"
+                className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28"
+              />
+              <p
+                className={`flex-1 leading-relaxed text-muted-foreground ${
+                  section.large
+                    ? "text-2xl font-bold text-foreground md:text-3xl"
+                    : "text-lg md:text-xl"
+                }`}
+              >
+                {section.text}
+              </p>
+            </div>
           </section>
           {i < sections.length - 1 && <CurvedArrow flip={i % 2 === 1} />}
         </div>
       ))}
+
+      {/* Mission Section */}
+      <div className="mt-20 space-y-12 text-center">
+        <CurvedArrow />
+
+        <div>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            Our Mission
+          </h2>
+          <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            To create a safe and compassionate space where young people can learn about mental health, find trusted support, and feel seen, heard, and understood.
+          </p>
+        </div>
+
+        <CurvedArrow flip />
+
+        <div>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            Our Vision
+          </h2>
+          <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            We imagine a world where mental health is spoken about without fear or stigma — asking for help is seen as strength, not weakness — and no one has to struggle in silence. Dino Initiative exists to turn loss into light, to offer hope, connection, and support to anyone who needs it.
+          </p>
+        </div>
+      </div>
 
       {/* Garden of flowers at the bottom */}
       <div className="mt-16 flex items-end justify-center gap-4 md:gap-6">
