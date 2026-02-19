@@ -57,7 +57,7 @@ const KindnessNew = () => {
         <CheckCircle className="mb-4 h-12 w-12 text-primary" />
         <h1 className="mb-2 text-2xl font-bold">Your letter is on its way</h1>
         <p className="mb-6 text-muted-foreground">
-          It will appear in the feed once reviewed. Thank you for spreading kindness.
+          Your letter is now live in the feed. Thank you for spreading kindness.
         </p>
         <div className="flex gap-3">
           <Button asChild variant="outline">
