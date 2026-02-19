@@ -3,7 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { z } from "zod";
 import flowerImg from "@/assets/flower-smile.png";
+
+const emailSchema = z.string().trim().email("Please enter a valid email").max(255, "Email is too long");
 
 const Index = () => {
   const { toast } = useToast();
@@ -11,6 +14,11 @@ const Index = () => {
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      toast({ title: "Invalid email", description: result.error.errors[0].message, variant: "destructive" });
+      return;
+    }
     toast({ title: "Thank you", description: "You've joined the early supporters list." });
     setEmail("");
   };

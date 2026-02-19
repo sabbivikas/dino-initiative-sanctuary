@@ -5,8 +5,24 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
 
 const skills = ["Writing", "Design", "Development", "Social media", "Counseling", "Translation"];
+
+const emailSchema = z.string().trim().email("Please enter a valid email").max(255, "Email is too long");
+
+const partnerSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
+  org: z.string().max(200, "Organization name is too long"),
+  email: emailSchema,
+  message: z.string().max(2000, "Message is too long"),
+});
+
+const volunteerSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
+  email: emailSchema,
+  skills: z.array(z.enum(["Writing", "Design", "Development", "Social media", "Counseling", "Translation"])),
+});
 
 const GetInvolved = () => {
   const { toast } = useToast();
@@ -18,20 +34,30 @@ const GetInvolved = () => {
     toast({ title: "Thank you", description: msg });
   };
 
+  const showError = (msg: string) => {
+    toast({ title: "Validation error", description: msg, variant: "destructive" });
+  };
+
   const handleSupporter = (e: React.FormEvent) => {
     e.preventDefault();
+    const result = emailSchema.safeParse(supporterEmail);
+    if (!result.success) { showError(result.error.errors[0].message); return; }
     confirm("You've been added to our supporters list.");
     setSupporterEmail("");
   };
 
   const handlePartner = (e: React.FormEvent) => {
     e.preventDefault();
+    const result = partnerSchema.safeParse(partner);
+    if (!result.success) { showError(result.error.errors[0].message); return; }
     confirm("We've received your partner inquiry and will be in touch.");
     setPartner({ name: "", org: "", email: "", message: "" });
   };
 
   const handleVolunteer = (e: React.FormEvent) => {
     e.preventDefault();
+    const result = volunteerSchema.safeParse(volunteer);
+    if (!result.success) { showError(result.error.errors[0].message); return; }
     confirm("Your volunteer interest has been submitted!");
     setVolunteer({ name: "", email: "", skills: [] });
   };
