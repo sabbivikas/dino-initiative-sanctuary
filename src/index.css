@@ -101,10 +101,6 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: 'Beautiful Night Club', Georgia, serif;
+    font-family: 'Beautiful Night Club', system-ui, sans-serif;
   }
 }
