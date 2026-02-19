@@ -28,6 +28,13 @@ const KindnessNew = () => {
     if (message.length > 600) { setError("Letter is too long (max 600 characters)."); return; }
     if (signature.length > 24) { setError("Signature is too long (max 24 characters)."); return; }
 
+    // Rate limit: 1 letter per hour
+    const lastTime = localStorage.getItem(RATE_LIMIT_KEY);
+    if (lastTime && Date.now() - parseInt(lastTime) < 3600000) {
+      setError("You can only send one letter per hour to prevent spam. Please try again later.");
+      return;
+    }
+
 
     setSubmitting(true);
     try {
