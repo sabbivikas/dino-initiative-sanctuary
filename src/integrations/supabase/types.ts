@@ -14,7 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      kindness_letters: {
+        Row: {
+          created_at: string
+          hearts: number
+          id: string
+          message: string
+          region: string | null
+          signature: string | null
+          status: Database["public"]["Enums"]["letter_status"]
+          tag: string | null
+        }
+        Insert: {
+          created_at?: string
+          hearts?: number
+          id?: string
+          message: string
+          region?: string | null
+          signature?: string | null
+          status?: Database["public"]["Enums"]["letter_status"]
+          tag?: string | null
+        }
+        Update: {
+          created_at?: string
+          hearts?: number
+          id?: string
+          message?: string
+          region?: string | null
+          signature?: string | null
+          status?: Database["public"]["Enums"]["letter_status"]
+          tag?: string | null
+        }
+        Relationships: []
+      }
+      letter_reports: {
+        Row: {
+          created_at: string
+          id: string
+          letter_id: string
+          reason: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          letter_id: string
+          reason?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          letter_id?: string
+          reason?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "letter_reports_letter_id_fkey"
+            columns: ["letter_id"]
+            isOneToOne: false
+            referencedRelation: "kindness_letters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +84,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      letter_status: "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +211,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      letter_status: ["pending", "approved", "rejected"],
+    },
   },
 } as const

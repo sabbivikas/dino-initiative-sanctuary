@@ -13,6 +13,10 @@ import GetInvolved from "./pages/GetInvolved";
 import Privacy from "./pages/Privacy";
 import Quiz from "./pages/Quiz";
 import Report from "./pages/Report";
+import KindnessFeed from "./pages/KindnessFeed";
+import KindnessNew from "./pages/KindnessNew";
+import KindnessView from "./pages/KindnessView";
+import KindnessAdmin from "./pages/KindnessAdmin";
 import NotFound from "./pages/NotFound";
 import VideoIntro from "./components/VideoIntro";
 
@@ -38,6 +42,10 @@ const App = () => {
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/report" element={<Report />} />
+              <Route path="/kindness" element={<KindnessFeed />} />
+              <Route path="/kindness/new" element={<KindnessNew />} />
+              <Route path="/kindness/:id" element={<KindnessView />} />
+              <Route path="/admin/kindness" element={<KindnessAdmin />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
