@@ -62,7 +62,7 @@ const OurStory = () => {
           <section className={`text-center ${i % 2 === 0 ? "" : "md:text-right"}`}>
             {i === 1 ? (
               <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
-                <img src={dinoFriends} alt="Dino friends" className="w-36 shrink-0 md:w-48" />
+                <img src={dinoFriends} alt="Dino friends" className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28" />
                 <div className="flex-1">
                   <div className="mb-4 flex items-center justify-center gap-4 md:justify-start">
                     <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
