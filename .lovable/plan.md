@@ -1,56 +1,41 @@
 
 
-# Dino Initiative — Website Plan
+## Typewriter Animation for Our Story Page
 
-## Design System
-- **Mobile-first**, clean editorial aesthetic with generous whitespace
-- Black text on white background, one soft accent color (a muted teal/sage) for links and buttons only
-- Large, calm typography with comfortable line-height
-- Max-width reading container (~640px) with generous vertical spacing
-- No gradients, no heavy illustrations, no decorative cards
-- Fully accessible: semantic HTML, good contrast, keyboard navigation
+Add a beautiful typewriter-style animation to the Our Story page where text appears character by character as the user scrolls or as sections come into view.
 
-## Global Layout
-- **Header**: Left-aligned "Dino Initiative" site name, inline nav links (Resources, Hotlines, Our Story, Get Involved), subtle "Get help now" button linking to Hotlines — sticky, minimal, present on every page
-- **Footer**: Links to Privacy and Safety, simple copyright line
+### Approach
 
-## Pages
+1. **Create a reusable `TypewriterText` component** (`src/components/TypewriterText.tsx`)
+   - Accepts text content as a prop
+   - Uses `useState` and `useEffect` to reveal characters one by one
+   - Includes a blinking cursor at the end while typing
+   - Configurable typing speed
 
-### 1. Home
-- Hero with large headline: *"A gentle place to check in."* and a short mission subhead
-- Two primary CTA buttons: Resources and Hotlines
-- Three-line value statement section (plain text, no cards)
-- Bordered crisis note with link to Hotlines
-- Minimal single-field email signup form: "Join the early supporters list"
+2. **Create a `FadeInSection` wrapper component** (`src/components/FadeInSection.tsx`)
+   - Uses Intersection Observer to detect when a section scrolls into view
+   - Triggers the typewriter animation only when the section becomes visible
+   - Each section animates independently as the user scrolls down
 
-### 2. Resources
-- Simple list of six topics: Anxiety, Low mood, Stress, Loneliness, Sleep, Grief
-- Each topic is an expandable accordion revealing:
-  - 3 coping tools
-  - 1 journaling prompt
-  - "When to reach out" guidance
+3. **Update `src/pages/OurStory.tsx`**
+   - Wrap each section heading in a typewriter component (faster speed)
+   - Wrap each paragraph in a typewriter component (slightly faster speed)
+   - Stagger the animations so the heading types first, then the paragraph follows
+   - Add a subtle fade-in for each section container
 
-### 3. Hotlines
-- Urgent intro paragraph
-- Country selector dropdown
-- Hotline entries as clean text blocks (name, phone, text/chat availability, hours) — placeholder data for a few countries
+4. **Add CSS for the blinking cursor** in `src/index.css`
+   - A simple blinking pipe `|` cursor animation using `@keyframes`
 
-### 4. Our Story
-- Clean narrative layout with section headings and short paragraphs telling the story of Dino Initiative
+### Visual Effect
+- Page loads with empty sections
+- As each section enters the viewport, the heading types out first
+- Once the heading finishes, the paragraph begins typing
+- A blinking cursor appears at the typing position
+- Cursor disappears once a section finishes typing
 
-### 5. Get Involved
-- Three minimal forms stacked vertically:
-  - **Supporter email** (single field)
-  - **Partner inquiry** (name, org, email, message)
-  - **Volunteer interest** (name, email, skills checklist)
-
-### 6. Privacy and Safety
-- Clear privacy statements in plain language
-- Disclaimer that Dino Initiative does not provide medical advice or diagnosis
-
-## Technical Notes
-- All forms are frontend-only (no backend) — form submissions show a toast confirmation
-- All data is static/hardcoded placeholder content
-- React Router for page navigation
-- Accordion component for Resources topics
+### Technical Details
+- No new dependencies needed -- pure React + CSS
+- Intersection Observer API for scroll-triggered activation
+- `requestAnimationFrame`-friendly interval for smooth character reveal
+- Typing speed: ~30ms per character for headings, ~15ms for paragraphs
 
