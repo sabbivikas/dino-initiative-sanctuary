@@ -53,6 +53,7 @@ const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
 import dinoBlueberry from "@/assets/dino-blueberry.png";
 import flowerImg from "@/assets/flower-smile.png";
 import dinoFriends from "@/assets/dino-friends.png";
+import dinoFlowers from "@/assets/dino-flowers.png";
 
 const OurStory = () => {
   return (
@@ -65,6 +66,20 @@ const OurStory = () => {
                 <img src={dinoFriends} alt="Dino friends" className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28" />
                 <div className="flex-1">
                   <div className="mb-4 flex items-center justify-center gap-4 md:justify-start">
+                    <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                      {section.heading}
+                    </h2>
+                  </div>
+                  <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                    {section.body}
+                  </p>
+                </div>
+              </div>
+            ) : i === 2 ? (
+              <div className="flex flex-col items-center gap-6 md:flex-row-reverse md:items-start">
+                <img src={dinoFlowers} alt="Dino holding flowers" className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28" />
+                <div className="flex-1">
+                  <div className="mb-4 flex items-center justify-center gap-4 md:justify-end">
                     <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
                       {section.heading}
                     </h2>
