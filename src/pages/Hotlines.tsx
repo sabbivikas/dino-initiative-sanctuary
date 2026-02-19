@@ -6,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import dinoFlowers from "@/assets/dino-flowers.png";
 
 type Hotline = { name: string; phone: string; text?: string; hours: string };
 
@@ -171,6 +172,9 @@ const Hotlines = () => {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
+      <div className="mb-6 flex justify-center">
+        <img src={dinoFlowers} alt="Dino holding flowers" className="h-32 w-32 object-contain md:h-40 md:w-40" />
+      </div>
       <h1 className="mb-2 text-3xl font-bold md:text-4xl">Crisis Hotlines</h1>
       <p className="mb-8 text-muted-foreground leading-relaxed">
         If you or someone you know is in immediate danger, please call your local emergency number. The lines below connect you with trained counselors who are ready to listen.
