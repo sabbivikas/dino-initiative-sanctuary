@@ -1,9 +1,11 @@
 import { CATEGORIES, Category, QUESTION_BANK, Question, CATEGORY_LABELS, CATEGORY_ANCHORS } from "./quizData";
+import { supabase } from "@/integrations/supabase/client";
 
 // ---------- localStorage keys ----------
 const KEY_LAST_DATE = "dino_lastQuizCompletedDate";
 const KEY_HISTORY = "dino_quizHistory";
 const KEY_RECENT_IDS = "dino_recentQuestionIds";
+const KEY_RECENT_PROMPTS = "dino_recentPrompts";
 const KEY_LAST_RESULT = "dino_lastQuizResult";
 
 // ---------- Types ----------
@@ -31,7 +33,7 @@ function todayStr(): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-// ---------- Question selection ----------
+// ---------- Question selection (fallback: static bank) ----------
 export function selectDailyQuestions(): Question[] {
   const recentIds: number[] = JSON.parse(localStorage.getItem(KEY_RECENT_IDS) || "[]");
   const recentSet = new Set(recentIds);
@@ -42,19 +44,56 @@ export function selectDailyQuestions(): Question[] {
     const pool = QUESTION_BANK.filter((q) => q.category === cat);
     const preferred = pool.filter((q) => !recentSet.has(q.id));
     const source = preferred.length >= 2 ? preferred : pool;
-    // pick 2 random
     const shuffled = [...source].sort(() => Math.random() - 0.5);
     selected.push(shuffled[0], shuffled[1]);
   }
 
-  // shuffle overall order
   selected.sort(() => Math.random() - 0.5);
 
-  // update recent ids
   const newRecent = [...recentIds, ...selected.map((q) => q.id)].slice(-50);
   localStorage.setItem(KEY_RECENT_IDS, JSON.stringify(newRecent));
 
   return selected;
+}
+
+// ---------- AI-generated questions ----------
+export async function generateAIQuestions(): Promise<Question[] | null> {
+  try {
+    const recentPrompts: string[] = JSON.parse(localStorage.getItem(KEY_RECENT_PROMPTS) || "[]");
+
+    const { data, error } = await supabase.functions.invoke("generate-quiz", {
+      body: { categories: CATEGORIES, recentPrompts: recentPrompts.slice(-30) },
+    });
+
+    if (error || !data?.questions) {
+      console.warn("AI quiz generation failed, using fallback:", error);
+      return null;
+    }
+
+    const questions: Question[] = data.questions.map((q: any) => ({
+      id: q.id,
+      category: q.category as Category,
+      prompt: q.prompt,
+    }));
+
+    // Validate we got the right count
+    if (questions.length < 14) {
+      console.warn("AI returned fewer than 14 questions, using fallback");
+      return null;
+    }
+
+    // Store recent prompts to avoid repeats
+    const newPrompts = [...recentPrompts, ...questions.map((q) => q.prompt)].slice(-60);
+    localStorage.setItem(KEY_RECENT_PROMPTS, JSON.stringify(newPrompts));
+
+    // Shuffle order
+    questions.sort(() => Math.random() - 0.5);
+
+    return questions;
+  } catch (e) {
+    console.warn("AI quiz generation error:", e);
+    return null;
+  }
 }
 
 // ---------- Scoring ----------

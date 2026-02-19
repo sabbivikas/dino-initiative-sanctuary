@@ -4,26 +4,53 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { Question, SCALE_LABELS, SAFETY_QUESTION } from "@/lib/quizData";
-import { hasCompletedToday, selectDailyQuestions, computeResult, saveResult } from "@/lib/quizUtils";
-import { AlertTriangle, Lock, ArrowRight, Heart } from "lucide-react";
+import { hasCompletedToday, selectDailyQuestions, generateAIQuestions, computeResult, saveResult } from "@/lib/quizUtils";
+import { AlertTriangle, Lock, ArrowRight, Heart, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Quiz = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [locked, setLocked] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [phase, setPhase] = useState<"quiz" | "safety">("quiz");
   const [showCrisis, setShowCrisis] = useState(false);
+  const [aiGenerated, setAiGenerated] = useState(false);
 
   useEffect(() => {
     if (hasCompletedToday()) {
       setLocked(true);
+      setLoading(false);
       return;
     }
-    const selected = selectDailyQuestions();
-    setQuestions(selected);
-    setAnswers(new Array(selected.length).fill(-1));
+
+    const loadQuestions = async () => {
+      setLoading(true);
+      try {
+        const aiQuestions = await generateAIQuestions();
+        if (aiQuestions) {
+          setQuestions(aiQuestions);
+          setAnswers(new Array(aiQuestions.length).fill(-1));
+          setAiGenerated(true);
+        } else {
+          // Fallback to static bank
+          const selected = selectDailyQuestions();
+          setQuestions(selected);
+          setAnswers(new Array(selected.length).fill(-1));
+        }
+      } catch {
+        const selected = selectDailyQuestions();
+        setQuestions(selected);
+        setAnswers(new Array(selected.length).fill(-1));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadQuestions();
   }, []);
 
   const handleAnswer = useCallback((value: number) => {
@@ -131,7 +158,14 @@ const Quiz = () => {
   }
 
   // Loading
-  if (questions.length === 0) return null;
+  if (loading || questions.length === 0) {
+    return (
+      <div className="mx-auto flex max-w-lg flex-col items-center px-6 py-32 text-center">
+        <Loader2 className="mb-4 h-8 w-8 animate-spin text-primary" />
+        <p className="text-muted-foreground">Generating your personalized quiz…</p>
+      </div>
+    );
+  }
 
   const question = questions[currentIndex];
   const progress = ((currentIndex) / questions.length) * 100;
@@ -170,9 +204,16 @@ const Quiz = () => {
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-center text-xs text-muted-foreground">
-        This quiz is not a diagnosis. It's a guide to help you find support.
-      </p>
+      <div className="mt-6 flex flex-col items-center gap-1">
+        {aiGenerated && (
+          <span className="rounded-full bg-primary/10 px-3 py-0.5 text-xs font-medium text-primary">
+            ✨ AI-generated · research-backed
+          </span>
+        )}
+        <p className="text-center text-xs text-muted-foreground">
+          This quiz is not a diagnosis. It's a guide to help you find support.
+        </p>
+      </div>
     </div>
   );
 };
