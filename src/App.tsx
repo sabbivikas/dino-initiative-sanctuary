@@ -11,6 +11,8 @@ import Hotlines from "./pages/Hotlines";
 import OurStory from "./pages/OurStory";
 import GetInvolved from "./pages/GetInvolved";
 import Privacy from "./pages/Privacy";
+import Quiz from "./pages/Quiz";
+import Report from "./pages/Report";
 import NotFound from "./pages/NotFound";
 import VideoIntro from "./components/VideoIntro";
 
@@ -34,6 +36,8 @@ const App = () => {
               <Route path="/our-story" element={<OurStory />} />
               <Route path="/get-involved" element={<GetInvolved />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/quiz" element={<Quiz />} />
+              <Route path="/report" element={<Report />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
