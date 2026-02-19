@@ -104,3 +104,13 @@
     font-family: 'Beautiful Night Club', system-ui, sans-serif;
   }
 }
+
+.typewriter-cursor {
+  animation: blink 0.7s step-end infinite;
+  font-weight: 100;
+  color: hsl(var(--primary));
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
