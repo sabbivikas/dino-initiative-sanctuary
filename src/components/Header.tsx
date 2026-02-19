@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight" onClick={() => setOpen(false)}>
+        <Link to="/" className="fixed top-4 left-4 z-50 flex items-center gap-2 text-lg font-semibold tracking-tight" onClick={() => setOpen(false)}>
           <img src={dinoLogo} alt="Dino Initiative logo" className="h-8 w-8 object-contain" />
           Dino Initiative
         </Link>
