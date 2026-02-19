@@ -16,33 +16,33 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-        <Link to="/" className="fixed top-4 left-4 z-50 flex items-center gap-2 text-lg font-semibold tracking-tight" onClick={() => setOpen(false)}>
-          <img src={dinoLogo} alt="Dino Initiative logo" className="h-8 w-8 object-contain" />
-          Dino Initiative
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
+        <Link to="/" className="flex items-center gap-2.5 text-lg font-semibold tracking-tight" onClick={() => setOpen(false)}>
+          <img src={dinoLogo} alt="Dino Initiative logo" className="h-9 w-9 object-contain" />
+          <span className="hidden sm:inline">Dino Initiative</span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              activeClassName="text-foreground"
+              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              activeClassName="text-foreground bg-accent"
             >
               {link.label}
             </NavLink>
           ))}
-          <Button asChild size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+          <Button asChild size="sm" className="ml-2 bg-primary text-primary-foreground shadow-sm hover:bg-primary/90">
             <Link to="/hotlines">Get help now</Link>
           </Button>
         </nav>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden"
+          className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground md:hidden"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
         >
