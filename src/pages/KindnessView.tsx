@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Heart, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import heartStamp from "@/assets/heart-stamp.png";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
@@ -74,7 +75,7 @@ const KindnessView = () => {
       <article className="rounded-xl border border-border/60 bg-card p-8 shadow-sm">
         <div className="mb-4 flex items-start justify-between">
           {letter.tag && <Badge variant="secondary">{letter.tag}</Badge>}
-          <Heart className="h-5 w-5 text-primary/40" />
+          <img src={heartStamp} alt="" className="h-10 w-10 object-contain opacity-60" />
         </div>
 
         <p className="mb-6 whitespace-pre-wrap leading-relaxed text-foreground">{letter.message}</p>
@@ -89,7 +90,7 @@ const KindnessView = () => {
             onClick={handleHeart}
             className={`flex items-center gap-1 text-sm transition-colors ${hearted ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
           >
-            <Heart className={`h-4 w-4 ${hearted ? "fill-primary" : ""}`} />
+            <img src={heartStamp} alt="heart" className={`h-5 w-5 object-contain ${hearted ? "" : "opacity-40"}`} />
             {letter.hearts}
           </button>
         </div>
