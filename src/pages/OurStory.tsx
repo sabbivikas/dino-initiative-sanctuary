@@ -55,7 +55,7 @@ const OurStory = () => {
     <div className="mx-auto max-w-3xl px-6 py-20 md:py-32">
       {sections.map((section, i) => (
         <div key={i}>
-          <section className={`text-center ${i % 2 === 0 ? "" : "md:text-right"}`}>
+          <section className="text-center">
             <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
               {section.heading}
             </h2>
