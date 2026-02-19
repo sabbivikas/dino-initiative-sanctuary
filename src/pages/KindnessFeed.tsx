@@ -243,7 +243,7 @@ const KindnessFeed = () => {
                         onClick={(e) => e.stopPropagation()}
                         className="text-xs text-muted-foreground hover:text-foreground"
                       >
-                        Share
+                        View
                       </Link>
                       <button
                         onClick={(e) => handleReport(e, letter.id)}
