@@ -16,19 +16,7 @@ const Index = () => {
   };
 
   return (
-    <div className="relative mx-auto max-w-2xl px-6 py-16 md:py-24">
-      {/* Decorative flowers */}
-      <img
-        src={flowerImg}
-        alt=""
-        className="pointer-events-none absolute -left-10 top-12 hidden w-16 origin-bottom animate-swing opacity-60 md:block"
-      />
-      <img
-        src={flowerImg}
-        alt=""
-        className="pointer-events-none absolute -right-10 top-64 hidden w-14 origin-bottom animate-swing opacity-50 md:block"
-        style={{ animationDelay: "1.5s" }}
-      />
+    <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
       {/* Hero */}
       <section className="mb-20 text-center">
         <h1 className="mb-4 text-4xl font-bold leading-tight md:text-5xl">

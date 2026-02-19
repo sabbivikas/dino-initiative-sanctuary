@@ -51,6 +51,7 @@ const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
 );
 
 import dinoBlueberry from "@/assets/dino-blueberry.png";
+import flowerImg from "@/assets/flower-smile.png";
 
 const OurStory = () => {
   return (
@@ -73,6 +74,15 @@ const OurStory = () => {
           {i < sections.length - 1 && <CurvedArrow flip={i % 2 === 1} />}
         </div>
       ))}
+
+      {/* Decorative flower at the bottom */}
+      <div className="mt-16 flex justify-center">
+        <img
+          src={flowerImg}
+          alt=""
+          className="w-20 origin-bottom animate-swing md:w-28"
+        />
+      </div>
     </div>
   );
 };
