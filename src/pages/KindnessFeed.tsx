@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Heart, Send } from "lucide-react";
+import { Send } from "lucide-react";
+import heartStamp from "@/assets/heart-stamp.png";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
@@ -128,7 +129,7 @@ const KindnessFeed = () => {
             key={letter.id}
             className="group relative rounded-xl border border-border/60 bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
           >
-            <Heart className="absolute right-4 top-4 h-4 w-4 text-primary/40" />
+            <img src={heartStamp} alt="" className="absolute right-3 top-3 h-8 w-8 object-contain opacity-60" />
             {letter.tag && (
               <Badge variant="secondary" className="mb-3 text-xs">
                 {letter.tag}
@@ -150,7 +151,7 @@ const KindnessFeed = () => {
                 onClick={() => handleHeart(letter.id)}
                 className={`flex items-center gap-1 text-xs transition-colors ${heartedIds.has(letter.id) ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
               >
-                <Heart className={`h-3.5 w-3.5 ${heartedIds.has(letter.id) ? "fill-primary" : ""}`} />
+                <img src={heartStamp} alt="heart" className={`h-4 w-4 object-contain ${heartedIds.has(letter.id) ? "" : "opacity-40"}`} />
                 {letter.hearts}
               </button>
               <Link to={`/kindness/${letter.id}`} className="text-xs text-muted-foreground hover:text-foreground">
