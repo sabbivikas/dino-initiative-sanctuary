@@ -52,7 +52,7 @@ const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
   </div>
 );
 
-const dinoImages = [dinoBlueberry, dinoFriends, dinoFlowers, dinoComfort, dinoBlueberry];
+const dinoImages = [dinoBlueberry, dinoFriends, dinoFlowers, dinoComfort];
 
 const OurStory = () => {
   return (
@@ -66,16 +66,20 @@ const OurStory = () => {
           <section className="text-center">
             <div
               className={`flex items-center gap-6 ${
-                i % 2 === 0
-                  ? "flex-col md:flex-row"
-                  : "flex-col md:flex-row-reverse"
+                dinoImages[i]
+                  ? i % 2 === 0
+                    ? "flex-col md:flex-row"
+                    : "flex-col md:flex-row-reverse"
+                  : "flex-col"
               }`}
             >
-              <img
-                src={dinoImages[i]}
-                alt="Dino mascot"
-                className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28"
-              />
+              {dinoImages[i] && (
+                <img
+                  src={dinoImages[i]}
+                  alt="Dino mascot"
+                  className="h-20 w-20 shrink-0 object-contain md:h-28 md:w-28"
+                />
+              )}
               <p
                 className={`flex-1 leading-relaxed text-muted-foreground ${
                   section.large
