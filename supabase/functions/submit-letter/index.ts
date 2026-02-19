@@ -114,7 +114,7 @@ Deno.serve(async (req) => {
       tag: tag || null,
       signature: signature?.trim() || null,
       region,
-      status: "pending",
+      status: "approved",
     }).select("id").single();
 
     if (error) throw error;
