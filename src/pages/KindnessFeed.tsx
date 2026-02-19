@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Send } from "lucide-react";
+import { Send, X } from "lucide-react";
 import heartStamp from "@/assets/heart-stamp.png";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -19,12 +19,44 @@ interface KindnessLetter {
 
 const PAGE_SIZE = 12;
 
+const ENVELOPE_COLORS = [
+  "bg-rose-50 border-rose-200",
+  "bg-sky-50 border-sky-200",
+  "bg-amber-50 border-amber-200",
+  "bg-emerald-50 border-emerald-200",
+  "bg-violet-50 border-violet-200",
+  "bg-pink-50 border-pink-200",
+  "bg-teal-50 border-teal-200",
+  "bg-orange-50 border-orange-200",
+  "bg-indigo-50 border-indigo-200",
+  "bg-lime-50 border-lime-200",
+];
+
+const FLAP_COLORS = [
+  "from-rose-100 to-rose-50",
+  "from-sky-100 to-sky-50",
+  "from-amber-100 to-amber-50",
+  "from-emerald-100 to-emerald-50",
+  "from-violet-100 to-violet-50",
+  "from-pink-100 to-pink-50",
+  "from-teal-100 to-teal-50",
+  "from-orange-100 to-orange-50",
+  "from-indigo-100 to-indigo-50",
+  "from-lime-100 to-lime-50",
+];
+
+const STAGGER_DELAYS = [
+  "0ms", "80ms", "160ms", "240ms", "320ms",
+  "400ms", "120ms", "200ms", "280ms", "360ms", "440ms", "60ms",
+];
+
 const KindnessFeed = () => {
   const [letters, setLetters] = useState<KindnessLetter[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [filter, setFilter] = useState<"all" | "loved">("all");
+  const [openId, setOpenId] = useState<string | null>(null);
   const [heartedIds, setHeartedIds] = useState<Set<string>>(() => {
     try {
       const stored = localStorage.getItem("dino_hearted_letters");
@@ -69,7 +101,8 @@ const KindnessFeed = () => {
     fetchLetters(next);
   };
 
-  const handleHeart = async (letterId: string) => {
+  const handleHeart = async (e: React.MouseEvent, letterId: string) => {
+    e.stopPropagation();
     if (heartedIds.has(letterId)) return;
     try {
       const res = await supabase.functions.invoke("heart-letter", {
@@ -87,7 +120,8 @@ const KindnessFeed = () => {
     }
   };
 
-  const handleReport = async (letterId: string) => {
+  const handleReport = async (e: React.MouseEvent, letterId: string) => {
+    e.stopPropagation();
     await supabase.from("letter_reports").insert({ letter_id: letterId, reason: "User reported" } as any);
     alert("Thank you. This letter has been reported for review.");
   };
@@ -123,46 +157,107 @@ const KindnessFeed = () => {
       </div>
 
       {/* Feed */}
-      <div className="grid gap-5 sm:grid-cols-2">
-        {letters.map((letter) => (
-          <article
-            key={letter.id}
-            className="group relative rounded-xl border border-border/60 bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <img src={heartStamp} alt="" className="absolute right-3 top-3 h-8 w-8 object-contain opacity-60" />
-            {letter.tag && (
-              <Badge variant="secondary" className="mb-3 text-xs">
-                {letter.tag}
-              </Badge>
-            )}
-            <p className="mb-4 text-sm leading-relaxed text-foreground">
-              {letter.message.length > 160 ? letter.message.slice(0, 160) + "…" : letter.message}
-            </p>
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
-              <span>
-                {letter.signature || "Anonymous"} · {formatDistanceToNow(new Date(letter.created_at), { addSuffix: true })}
-              </span>
-              {letter.region && (
-                <span className="italic">Sent to: {letter.region}</span>
-              )}
-            </div>
-            <div className="mt-3 flex items-center gap-3 border-t border-border/40 pt-3">
-              <button
-                onClick={() => handleHeart(letter.id)}
-                className={`flex items-center gap-1 text-xs transition-colors ${heartedIds.has(letter.id) ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
-              >
-                <img src={heartStamp} alt="heart" className={`h-4 w-4 object-contain ${heartedIds.has(letter.id) ? "" : "opacity-40"}`} />
-                {letter.hearts}
-              </button>
-              <Link to={`/kindness/${letter.id}`} className="text-xs text-muted-foreground hover:text-foreground">
-                Read
-              </Link>
-              <button onClick={() => handleReport(letter.id)} className="ml-auto text-xs text-muted-foreground hover:text-destructive">
-                Report
-              </button>
-            </div>
-          </article>
-        ))}
+      <div className="grid gap-6 sm:grid-cols-2">
+        {letters.map((letter, idx) => {
+          const colorIdx = idx % ENVELOPE_COLORS.length;
+          const isOpen = openId === letter.id;
+          const delay = STAGGER_DELAYS[idx % STAGGER_DELAYS.length];
+
+          return (
+            <article
+              key={letter.id}
+              onClick={() => setOpenId(isOpen ? null : letter.id)}
+              className={`group relative cursor-pointer rounded-xl border-2 shadow-sm transition-all duration-500 hover:shadow-lg ${ENVELOPE_COLORS[colorIdx]} ${isOpen ? "row-span-1" : ""}`}
+              style={{ animationDelay: delay }}
+            >
+              {/* Envelope flap (visible when closed) */}
+              <div
+                className={`absolute inset-x-0 top-0 z-10 h-16 origin-top rounded-t-xl bg-gradient-to-b transition-transform duration-500 ease-in-out ${FLAP_COLORS[colorIdx]} ${isOpen ? "[transform:rotateX(180deg)] opacity-0" : "[transform:rotateX(0deg)]"}`}
+                style={{ perspective: "800px", backfaceVisibility: "hidden" }}
+              />
+
+              {/* Heart stamp on envelope */}
+              <img
+                src={heartStamp}
+                alt=""
+                className={`absolute right-4 top-2 z-20 h-10 w-10 object-contain transition-all duration-500 ${isOpen ? "scale-75 opacity-30 top-1 right-2" : "opacity-80 hover:scale-110"}`}
+              />
+
+              {/* Envelope front (closed state) */}
+              <div className={`relative z-0 px-5 pb-4 pt-20 transition-all duration-500 ${isOpen ? "pt-6" : ""}`}>
+                {!isOpen && (
+                  <div className="animate-fade-in">
+                    {letter.tag && (
+                      <Badge variant="secondary" className="mb-2 text-xs">{letter.tag}</Badge>
+                    )}
+                    <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-foreground/80">
+                      {letter.message.slice(0, 80)}…
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <span>{letter.signature || "Anonymous"}</span>
+                      <span>{formatDistanceToNow(new Date(letter.created_at), { addSuffix: true })}</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Letter content (open state) */}
+                {isOpen && (
+                  <div className="animate-fade-in">
+                    <div className="mb-4 flex items-center justify-between">
+                      {letter.tag && (
+                        <Badge variant="secondary" className="text-xs">{letter.tag}</Badge>
+                      )}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setOpenId(null); }}
+                        className="rounded-full p-1 text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+
+                    <div className="mb-4 rounded-lg bg-background/60 p-4">
+                      <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground">
+                        {letter.message}
+                      </p>
+                    </div>
+
+                    <div className="mb-3 flex items-center justify-between text-xs text-muted-foreground">
+                      <span>
+                        {letter.signature || "Anonymous"} · {formatDistanceToNow(new Date(letter.created_at), { addSuffix: true })}
+                      </span>
+                      {letter.region && (
+                        <span className="italic">Sent to: {letter.region}</span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-3 border-t border-current/10 pt-3">
+                      <button
+                        onClick={(e) => handleHeart(e, letter.id)}
+                        className={`flex items-center gap-1.5 text-xs transition-all ${heartedIds.has(letter.id) ? "text-primary scale-110" : "text-muted-foreground hover:text-primary hover:scale-105"}`}
+                      >
+                        <img src={heartStamp} alt="heart" className={`h-5 w-5 object-contain transition-opacity ${heartedIds.has(letter.id) ? "" : "opacity-40"}`} />
+                        {letter.hearts}
+                      </button>
+                      <Link
+                        to={`/kindness/${letter.id}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-xs text-muted-foreground hover:text-foreground"
+                      >
+                        Share
+                      </Link>
+                      <button
+                        onClick={(e) => handleReport(e, letter.id)}
+                        className="ml-auto text-xs text-muted-foreground hover:text-destructive"
+                      >
+                        Report
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       {loading && <p className="mt-8 text-center text-sm text-muted-foreground">Loading…</p>}
