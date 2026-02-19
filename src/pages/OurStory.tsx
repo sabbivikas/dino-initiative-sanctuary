@@ -1,6 +1,7 @@
 import dinoBlueberry from "@/assets/dino-blueberry.png";
 import dinoFriends from "@/assets/dino-friends.png";
 import dinoFlowers from "@/assets/dino-flowers.png";
+import dinoComfort from "@/assets/dino-comfort.png";
 import flowerImg from "@/assets/flower-smile.png";
 
 const sections = [
@@ -51,7 +52,7 @@ const CurvedArrow = ({ flip = false }: { flip?: boolean }) => (
   </div>
 );
 
-const dinoImages = [dinoBlueberry, dinoFriends, dinoFlowers, dinoFriends, dinoBlueberry];
+const dinoImages = [dinoBlueberry, dinoFriends, dinoFlowers, dinoComfort, dinoBlueberry];
 
 const OurStory = () => {
   return (
