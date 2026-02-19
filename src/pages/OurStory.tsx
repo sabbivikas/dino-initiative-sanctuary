@@ -3,6 +3,7 @@ import dinoFriends from "@/assets/dino-friends.png";
 import dinoFlowers from "@/assets/dino-flowers.png";
 import dinoComfort from "@/assets/dino-comfort.png";
 import flowerImg from "@/assets/flower-smile.png";
+import flowerBlue from "@/assets/flower-smile-blue.png";
 
 const sections = [
   {
@@ -124,7 +125,7 @@ const OurStory = () => {
       <div className="mt-16 flex items-end justify-center gap-4 md:gap-6">
         <img src={flowerImg} alt="" className="w-10 origin-bottom animate-swing opacity-60 md:w-14" style={{ animationDelay: "0.5s" }} />
         <img src={flowerImg} alt="" className="w-14 origin-bottom animate-swing opacity-80 md:w-20" style={{ animationDelay: "1.2s" }} />
-        <img src={flowerImg} alt="" className="w-20 origin-bottom animate-swing md:w-28" />
+        <img src={flowerBlue} alt="" className="w-20 origin-bottom animate-swing md:w-28" />
         <img src={flowerImg} alt="" className="w-14 origin-bottom animate-swing opacity-80 md:w-20" style={{ animationDelay: "0.8s" }} />
         <img src={flowerImg} alt="" className="w-10 origin-bottom animate-swing opacity-60 md:w-14" style={{ animationDelay: "1.5s" }} />
       </div>
