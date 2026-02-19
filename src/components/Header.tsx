@@ -6,6 +6,7 @@ import { useState } from "react";
 import dinoLogo from "@/assets/dino-logo.png";
 
 const navLinks = [
+  { to: "/quiz", label: "Daily Quiz" },
   { to: "/resources", label: "Resources" },
   { to: "/hotlines", label: "Hotlines" },
   { to: "/our-story", label: "Our Story" },
