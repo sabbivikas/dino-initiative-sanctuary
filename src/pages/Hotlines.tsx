@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import dinoFlowers from "@/assets/dino-flowers.png";
+import dinoFlowers from "@/assets/dino-flowers-hotline.png";
 
 type Hotline = { name: string; phone: string; text?: string; hours: string };
 
