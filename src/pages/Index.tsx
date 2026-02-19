@@ -1,28 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
-import { z } from "zod";
-import flowerImg from "@/assets/flower-smile.png";
-
-const emailSchema = z.string().trim().email("Please enter a valid email").max(255, "Email is too long");
+import flowerYellow from "@/assets/flower-smile-yellow.png";
 
 const Index = () => {
-  const { toast } = useToast();
-  const [email, setEmail] = useState("");
-
-  const handleSignup = (e: React.FormEvent) => {
-    e.preventDefault();
-    const result = emailSchema.safeParse(email);
-    if (!result.success) {
-      toast({ title: "Invalid email", description: result.error.errors[0].message, variant: "destructive" });
-      return;
-    }
-    toast({ title: "Thank you", description: "You've joined the early supporters list." });
-    setEmail("");
-  };
-
   return (
     <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
       {/* Hero */}
@@ -61,20 +41,13 @@ const Index = () => {
         </p>
       </section>
 
-      {/* Email signup */}
-      <section className="text-center">
-        <h2 className="mb-2 text-xl font-semibold">Join the early supporters list</h2>
-        <p className="mb-6 text-sm text-muted-foreground">Stay updated as we grow.</p>
-        <form onSubmit={handleSignup} className="mx-auto flex max-w-sm gap-3">
-          <Input
-            type="email"
-            required
-            placeholder="your@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Button type="submit">Join</Button>
-        </form>
+      {/* Yellow flower */}
+      <section className="flex justify-center py-4">
+        <img
+          src={flowerYellow}
+          alt="Smiling yellow flower"
+          className="w-24 origin-bottom animate-swing md:w-32"
+        />
       </section>
     </div>
   );
