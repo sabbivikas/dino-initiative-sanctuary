@@ -1,5 +1,3 @@
-import dinoSitting from "@/assets/dino-sitting.png";
-
 const sections = [
   {
     heading: "Our Story",
@@ -57,32 +55,14 @@ const OurStory = () => {
     <div className="mx-auto max-w-3xl px-6 py-20 md:py-32">
       {sections.map((section, i) => (
         <div key={i}>
-          {i === 0 ? (
-            <section className="flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-10">
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                  {section.heading}
-                </h2>
-                <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                  {section.body}
-                </p>
-              </div>
-              <img
-                src={dinoSitting}
-                alt="Dino mascot sitting"
-                className="w-40 shrink-0 md:w-52"
-              />
-            </section>
-          ) : (
-            <section className="text-center">
-              <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                {section.heading}
-              </h2>
-              <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                {section.body}
-              </p>
-            </section>
-          )}
+          <section className={`text-center ${i % 2 === 0 ? "" : "md:text-right"}`}>
+            <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+              {section.heading}
+            </h2>
+            <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+              {section.body}
+            </p>
+          </section>
           {i < sections.length - 1 && <CurvedArrow flip={i % 2 === 1} />}
         </div>
       ))}
