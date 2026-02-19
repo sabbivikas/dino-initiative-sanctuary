@@ -1,41 +1,46 @@
 
 
-## Typewriter Animation for Our Story Page
+## Expand Crisis Hotlines with Verified Global Numbers
 
-Add a beautiful typewriter-style animation to the Our Story page where text appears character by character as the user scrolls or as sections come into view.
+Update `src/pages/Hotlines.tsx` to include accurate, researched crisis hotline numbers for 35+ countries, with strong Southeast Asia coverage. All numbers are cross-referenced from FindAHelpline.com, OpenCounseling, and official organization websites.
 
-### Approach
+### Countries and Verified Numbers
 
-1. **Create a reusable `TypewriterText` component** (`src/components/TypewriterText.tsx`)
-   - Accepts text content as a prop
-   - Uses `useState` and `useEffect` to reveal characters one by one
-   - Includes a blinking cursor at the end while typing
-   - Configurable typing speed
+**Southeast Asia (10 countries):**
+- **Philippines** -- HOPELINE (02) 8804-4673, In Touch Crisis Line +63 2 8893 7603, NCMH Crisis Hotline 1800-1888-1553 (all 24/7)
+- **Indonesia** -- Healing119 Hotline 119 (24/7), Into The Light Indonesia 021-7884-5555
+- **Thailand** -- Social Help Center 1300 (24/7), Samaritans of Thailand 02-113-6789
+- **Malaysia** -- MIASA Crisis Helpline 1-800-18-0066 (24/7), Befrienders KL 03-7627-2929 (24/7)
+- **Singapore** -- Samaritans of Singapore 1767 (24/7), National Mindline 1771
+- **Vietnam** -- HOPE Suicide Prevention 0865-044-400, National Child Helpline 111 (24/7)
+- **Myanmar** -- We Are All Ears 09-777-206-035
+- **Cambodia** -- Child Helpline Cambodia 1280 (24/7), TPO Cambodia 017-222-372
+- **Brunei** -- Mental Health Helpline 145
+- **Laos** -- Lao Women's Union Hotline 1362
 
-2. **Create a `FadeInSection` wrapper component** (`src/components/FadeInSection.tsx`)
-   - Uses Intersection Observer to detect when a section scrolls into view
-   - Triggers the typewriter animation only when the section becomes visible
-   - Each section animates independently as the user scrolls down
+**East Asia (5):**
+- Japan, South Korea, China, Taiwan, Hong Kong
 
-3. **Update `src/pages/OurStory.tsx`**
-   - Wrap each section heading in a typewriter component (faster speed)
-   - Wrap each paragraph in a typewriter component (slightly faster speed)
-   - Stagger the animations so the heading types first, then the paragraph follows
-   - Add a subtle fade-in for each section container
+**South Asia (5):**
+- India, Pakistan, Bangladesh, Sri Lanka, Nepal
 
-4. **Add CSS for the blinking cursor** in `src/index.css`
-   - A simple blinking pipe `|` cursor animation using `@keyframes`
+**Europe (8):**
+- Germany, France, Spain, Italy, Netherlands, Sweden, Ireland, Switzerland
 
-### Visual Effect
-- Page loads with empty sections
-- As each section enters the viewport, the heading types out first
-- Once the heading finishes, the paragraph begins typing
-- A blinking cursor appears at the typing position
-- Cursor disappears once a section finishes typing
+**Americas (5):**
+- Mexico, Brazil, Argentina, Colombia, New Zealand
+
+**Middle East and Africa (4):**
+- South Africa, Nigeria, Kenya, UAE
+
+Plus the existing 4 (US, UK, Canada, Australia).
 
 ### Technical Details
-- No new dependencies needed -- pure React + CSS
-- Intersection Observer API for scroll-triggered activation
-- `requestAnimationFrame`-friendly interval for smooth character reveal
-- Typing speed: ~30ms per character for headings, ~15ms for paragraphs
+
+**File changed:** `src/pages/Hotlines.tsx`
+
+- Expand the `data` record from 4 to ~35+ countries with verified phone numbers, text/chat options where available, and hours
+- Countries sorted alphabetically in the dropdown
+- No structural/UI changes -- same Select dropdown and card layout
+- Each entry includes: organization name, phone number, text option (if available), hours of operation
 
