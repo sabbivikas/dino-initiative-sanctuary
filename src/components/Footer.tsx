@@ -13,6 +13,9 @@ const Footer = () => (
         <Link to="/support" className="transition-colors hover:text-foreground">
           Support
         </Link>
+        <Link to="/copyright" className="transition-colors hover:text-foreground">
+          Copyright
+        </Link>
       </div>
       <span>© {new Date().getFullYear()} Dino Initiative</span>
     </div>
