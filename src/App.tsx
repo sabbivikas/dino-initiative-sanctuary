@@ -17,6 +17,7 @@ import KindnessFeed from "./pages/KindnessFeed";
 import KindnessNew from "./pages/KindnessNew";
 import KindnessView from "./pages/KindnessView";
 import KindnessAdmin from "./pages/KindnessAdmin";
+import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 import VideoIntro from "./components/VideoIntro";
 
@@ -46,6 +47,7 @@ const App = () => {
               <Route path="/kindness/new" element={<KindnessNew />} />
               <Route path="/kindness/:id" element={<KindnessView />} />
               <Route path="/admin/kindness" element={<KindnessAdmin />} />
+              <Route path="/support" element={<Support />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
