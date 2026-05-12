@@ -9,6 +9,21 @@ import {
   AlertTriangle,
   Mail,
 } from "lucide-react";
+import screen01 from "@/assets/app-screen-01.png";
+import screen02 from "@/assets/app-screen-02.png";
+import screen03 from "@/assets/app-screen-03.png";
+import screen04 from "@/assets/app-screen-04.jpg";
+import screen05 from "@/assets/app-screen-05.jpg";
+import screen06 from "@/assets/app-screen-06.png";
+
+const screenshots = [
+  { src: screen01, alt: "Dino Initiative home screen with daily check-in and mood cards" },
+  { src: screen02, alt: "Emotional weather check-in screen" },
+  { src: screen03, alt: "Breathe with Dino guided breathing screen" },
+  { src: screen04, alt: "Gratitude jar with collected keepsakes" },
+  { src: screen05, alt: "Journal screen with recent memory cards" },
+  { src: screen06, alt: "Your garden growth tracking screen" },
+];
 
 const features = [
   {
@@ -58,19 +73,25 @@ const AppMarketing = () => {
         </p>
       </section>
 
-      {/* Screenshot placeholders */}
+      {/* Screenshots */}
       <section className="mb-16">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {[1, 2, 3].map((i) => (
+          {screenshots.map(({ src, alt }) => (
             <div
-              key={i}
-              className="aspect-[9/19] rounded-2xl border border-border/60 bg-secondary/50"
-              aria-label={`App screenshot ${i} placeholder`}
-            />
+              key={src}
+              className="overflow-hidden rounded-2xl border border-border/60 bg-secondary/30"
+            >
+              <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
           ))}
         </div>
         <p className="mt-3 text-center text-xs text-muted-foreground">
-          App screenshots
+          A look inside Dino
         </p>
       </section>
 
