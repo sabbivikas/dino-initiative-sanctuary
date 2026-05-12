@@ -19,6 +19,7 @@ import KindnessView from "./pages/KindnessView";
 import KindnessAdmin from "./pages/KindnessAdmin";
 import Support from "./pages/Support";
 import AppMarketing from "./pages/AppMarketing";
+import Copyright from "./pages/Copyright";
 import NotFound from "./pages/NotFound";
 import VideoIntro from "./components/VideoIntro";
 
@@ -50,6 +51,7 @@ const App = () => {
               <Route path="/admin/kindness" element={<KindnessAdmin />} />
               <Route path="/support" element={<Support />} />
               <Route path="/app" element={<AppMarketing />} />
+              <Route path="/copyright" element={<Copyright />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
