@@ -46,6 +46,10 @@ const Index = () => {
         <img
           src={flowerYellow}
           alt="Smiling yellow flower"
+          width={128}
+          height={128}
+          loading="lazy"
+          decoding="async"
           className="w-24 origin-bottom animate-swing md:w-32"
         />
       </section>
