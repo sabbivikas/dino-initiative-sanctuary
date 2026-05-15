@@ -1,0 +1,22 @@
+# Dino Initiative
+
+> A free, anonymous mental health companion offering a daily AI-guided quiz, crisis hotlines, kindness letters, and gentle resources. Dino Initiative does not provide medical advice.
+
+## Pages
+
+- [Home](/): Overview of Dino Initiative and entry to all tools.
+- [The Dino App](/app): Marketing page for the Dino mental health app.
+- [Our Story](/our-story): How and why Dino Initiative was created.
+- [Resources](/resources): Coping tools, journaling prompts, and guidance on when to reach out.
+- [Crisis Hotlines](/hotlines): Verified mental health hotlines for 37 countries.
+- [Daily Quiz](/quiz): AI-generated 14-question mental health check-in.
+- [Quiz Report](/report): Personal dashboard summarizing past quiz results.
+- [Kindness Letters](/kindness): Anonymous, moderated message board of supportive notes.
+- [Write a Letter](/kindness/new): Submit an anonymous kindness letter.
+- [Get Involved](/get-involved): Join the community and support the project.
+- [Support](/support): Help and contact information.
+
+## Optional
+
+- [Privacy](/privacy): Privacy policy.
+- [Copyright](/copyright): Copyright and ownership notice.
