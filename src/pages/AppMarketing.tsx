@@ -71,7 +71,8 @@ const AppMarketing = () => {
           daily habits that support your emotional wellbeing. It is designed to
           feel comforting, friendly, and easy to use.
         </p>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex flex-col items-center gap-3">
+          <p className="text-sm font-medium text-foreground">Download the Dino app — available on iOS</p>
           <a
             href="https://apps.apple.com/us/app/dino-initiative/id6763940737"
             target="_blank"
