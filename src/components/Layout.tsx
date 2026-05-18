@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import AppPromoPopup from "./AppPromoPopup";
 
 const Layout = () => (
   <div className="flex min-h-screen flex-col">
@@ -9,6 +10,7 @@ const Layout = () => (
       <Outlet />
     </main>
     <Footer />
+    <AppPromoPopup />
   </div>
 );
 
