@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import flowerYellow from "@/assets/flower-smile-yellow.png";
+import dinoComfort from "@/assets/dino-comfort.png";
 
 const Index = () => {
   return (
