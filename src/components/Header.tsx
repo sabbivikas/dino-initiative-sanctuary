@@ -8,6 +8,7 @@ import dinoLogo from "@/assets/dino-logo.png";
 const navLinks = [
   { to: "/quiz", label: "Daily Quiz" },
   { to: "/kindness", label: "Kindness Letters" },
+  { to: "/stories", label: "Dino Stories" },
   { to: "/resources", label: "Resources" },
   { to: "/hotlines", label: "Hotlines" },
   { to: "/our-story", label: "Our Story" },
