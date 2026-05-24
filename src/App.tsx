@@ -52,6 +52,7 @@ const App = () => {
               <Route path="/admin/kindness" element={<KindnessAdmin />} />
               <Route path="/support" element={<Support />} />
               <Route path="/app" element={<AppMarketing />} />
+              <Route path="/stories" element={<DinoStories />} />
               <Route path="/copyright" element={<Copyright />} />
             </Route>
             <Route path="*" element={<NotFound />} />
