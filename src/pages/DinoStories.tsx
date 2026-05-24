@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { Play, X } from "lucide-react";
+import { Link, useSearchParams } from "react-router-dom";
+import { Play, X, Share2, Link as LinkIcon, Twitter, Facebook, MessageSquare, Instagram } from "lucide-react";
+import { toast } from "sonner";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 type Episode = {
   id: number;
@@ -21,9 +23,121 @@ const episodes: Episode[] = [
   },
 ];
 
+const SITE_ORIGIN = "https://www.dinoinitiative.com";
+
+const buildShareUrl = (epId: number) => `${SITE_ORIGIN}/stories?ep=${epId}`;
+
+const SharePopover = ({ episode }: { episode: Episode }) => {
+  const url = buildShareUrl(episode.id);
+  const text = `Watch "${episode.title}" — Dino Stories`;
+
+  const copyLink = async (note?: string) => {
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success(note ?? "Link copied");
+    } catch {
+      toast.error("Could not copy link");
+    }
+  };
+
+  const open = (href: string) => window.open(href, "_blank", "noopener,noreferrer");
+
+  const shareInstagram = async () => {
+    // Prefer native share sheet on mobile so users can pick Instagram directly
+    if (typeof navigator !== "undefined" && (navigator as any).share) {
+      try {
+        await (navigator as any).share({ title: episode.title, text, url });
+        return;
+      } catch {
+        // user cancelled or unsupported — fall through to copy
+      }
+    }
+    copyLink("Link copied — paste into your Instagram story");
+  };
+
+  const items = [
+    {
+      label: "Copy link",
+      icon: LinkIcon,
+      onClick: () => copyLink(),
+    },
+    {
+      label: "Twitter / X",
+      icon: Twitter,
+      onClick: () =>
+        open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+        ),
+    },
+    {
+      label: "Facebook",
+      icon: Facebook,
+      onClick: () => open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`),
+    },
+    {
+      label: "Instagram",
+      icon: Instagram,
+      onClick: shareInstagram,
+    },
+    {
+      label: "Messages",
+      icon: MessageSquare,
+      onClick: () => open(`sms:?&body=${encodeURIComponent(`${text} ${url}`)}`),
+    },
+  ];
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <button
+          onClick={(e) => e.stopPropagation()}
+          aria-label={`Share ${episode.title}`}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+        >
+          <Share2 className="h-4 w-4" />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="end"
+        className="w-56 p-1"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="px-2 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          Share episode
+        </div>
+        <ul className="flex flex-col">
+          {items.map(({ label, icon: Icon, onClick }) => (
+            <li key={label}>
+              <button
+                onClick={onClick}
+                className="flex w-full items-center gap-3 rounded-sm px-2 py-2 text-left text-sm transition-colors hover:bg-secondary"
+              >
+                <Icon className="h-4 w-4 text-muted-foreground" />
+                <span>{label}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </PopoverContent>
+    </Popover>
+  );
+};
+
 const DinoStories = () => {
   const [playing, setPlaying] = useState<Episode | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [searchParams] = useSearchParams();
+
+  // Deep link: /stories?ep=<id> auto-opens that episode
+  useEffect(() => {
+    const epParam = searchParams.get("ep");
+    if (!epParam) return;
+    const id = Number(epParam);
+    const ep = episodes.find((e) => e.id === id);
+    if (ep) setPlaying(ep);
+    // run once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Auto-play and request fullscreen when an episode is opened
   useEffect(() => {
@@ -96,10 +210,14 @@ const DinoStories = () => {
 
         <ul className="divide-y divide-border border-y border-border">
           {episodes.map((ep, idx) => (
-            <li key={ep.id}>
+            <li
+              key={ep.id}
+              className="group flex items-center gap-5 px-2 py-5 transition-colors hover:bg-secondary/60 md:gap-6 md:px-4 md:py-6"
+            >
               <button
                 onClick={() => setPlaying(ep)}
-                className="group flex w-full items-center gap-5 px-2 py-5 text-left transition-colors hover:bg-secondary/60 md:gap-6 md:px-4 md:py-6"
+                className="flex flex-1 items-center gap-5 text-left md:gap-6"
+                aria-label={`Play ${ep.number} ${ep.title}`}
               >
                 <span className="w-8 shrink-0 text-2xl font-bold text-muted-foreground md:text-3xl">
                   {idx + 1}
@@ -130,6 +248,8 @@ const DinoStories = () => {
                   </p>
                 </div>
               </button>
+
+              <SharePopover episode={ep} />
             </li>
           ))}
         </ul>
