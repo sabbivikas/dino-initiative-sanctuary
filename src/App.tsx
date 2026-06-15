@@ -21,6 +21,7 @@ import Support from "./pages/Support";
 import AppMarketing from "./pages/AppMarketing";
 import DinoStories from "./pages/DinoStories";
 import Copyright from "./pages/Copyright";
+import Partners from "./pages/Partners";
 import NotFound from "./pages/NotFound";
 import VideoIntro from "./components/VideoIntro";
 
@@ -54,6 +55,7 @@ const App = () => {
               <Route path="/app" element={<AppMarketing />} />
               <Route path="/stories" element={<DinoStories />} />
               <Route path="/copyright" element={<Copyright />} />
+              <Route path="/partners" element={<Partners />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
