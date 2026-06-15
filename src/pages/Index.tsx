@@ -98,7 +98,7 @@ const Index = () => {
                 alt="Dino Initiative home screen on iPhone"
                 width={400}
                 height={820}
-                fetchpriority="high"
+                loading="eager"
                 className="h-full w-full object-cover"
               />
             </div>
