@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Cloud, Sparkles, Wind, Heart, LifeBuoy, ArrowRight } from "lucide-react";
+import { Cloud, Sparkles, Wind, Heart, LifeBuoy, ArrowRight, ArrowUpRight } from "lucide-react";
 import flowerYellow from "@/assets/flower-smile-yellow.png";
 import dinoComfort from "@/assets/dino-comfort.png";
 import screen01 from "@/assets/app-screen-01.png";
