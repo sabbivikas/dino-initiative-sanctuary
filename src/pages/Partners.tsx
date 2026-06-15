@@ -72,14 +72,20 @@ const Partners = () => {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">
-              <a href={mailto("Investor inquiry — Dino Initiative")}>
-                <Mail className="mr-2 h-4 w-4" />
-                Contact our team
+              <a href="https://cal.com/vikassabbi/30min" target="_blank" rel="noopener noreferrer">
+                <ArrowUpRight className="mr-2 h-4 w-4" />
+                Book a 30-min call
               </a>
             </Button>
             <Button asChild size="lg" variant="outline">
+              <a href={mailto("Investor inquiry — Dino Initiative")}>
+                <Mail className="mr-2 h-4 w-4" />
+                Email our team
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="ghost">
               <Link to="/our-story">
-                Read our story <ArrowUpRight className="ml-2 h-4 w-4" />
+                Read our story
               </Link>
             </Button>
           </div>
@@ -172,13 +178,24 @@ const Partners = () => {
           <p className="mx-auto mb-7 max-w-md text-sm opacity-80">
             We respond personally to every press, investor, and partnership inquiry.
           </p>
-          <a
-            href={mailto("Inquiry — Dino Initiative")}
-            className="inline-flex items-center gap-2 rounded-xl bg-background px-6 py-3.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90"
-          >
-            <Mail className="h-4 w-4" />
-            {CONTACT_EMAIL}
-          </a>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="https://cal.com/vikassabbi/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-background px-6 py-3.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90"
+            >
+              <ArrowUpRight className="h-4 w-4" />
+              Book a 30-min call
+            </a>
+            <a
+              href={mailto("Inquiry — Dino Initiative")}
+              className="inline-flex items-center gap-2 rounded-xl border border-background/20 px-6 py-3.5 text-sm font-semibold transition-opacity hover:opacity-80"
+            >
+              <Mail className="h-4 w-4" />
+              {CONTACT_EMAIL}
+            </a>
+          </div>
         </section>
       </div>
     </>

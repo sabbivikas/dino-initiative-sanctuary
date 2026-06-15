@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Cloud, Sparkles, Wind, Heart, LifeBuoy, ArrowRight } from "lucide-react";
+import { Cloud, Sparkles, Wind, Heart, LifeBuoy, ArrowRight, ArrowUpRight } from "lucide-react";
 import flowerYellow from "@/assets/flower-smile-yellow.png";
 import dinoComfort from "@/assets/dino-comfort.png";
 import screen01 from "@/assets/app-screen-01.png";
@@ -215,11 +215,18 @@ const Index = () => {
               young people on mental health. See how to work with us.
             </p>
           </div>
-          <Button asChild size="lg" className="shrink-0">
-            <Link to="/partners">
-              Work with us <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex shrink-0 flex-col gap-3">
+            <Button asChild size="lg" className="shrink-0">
+              <a href="https://cal.com/vikassabbi/30min" target="_blank" rel="noopener noreferrer">
+                Book a 30-min call <ArrowUpRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="sm" className="shrink-0">
+              <Link to="/partners">
+                Or learn more <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </section>
 
         {/* Crisis note */}
