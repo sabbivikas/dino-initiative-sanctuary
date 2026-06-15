@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import promoImage from "@/assets/app-promo-banner.png";
+import { APP_STORE_URL } from "@/lib/appStore";
 
 const STORAGE_KEY = "dino-app-promo-dismissed";
 
@@ -43,7 +44,7 @@ const AppPromoPopup = () => {
           <X className="h-5 w-5" />
         </button>
         <a
-          href="https://apps.apple.com/us/app/dino-initiative/id6763940737"
+          href={APP_STORE_URL}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Download Dino Initiative on the App Store"

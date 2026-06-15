@@ -7,6 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import dinoFlowers from "@/assets/dino-flowers-hotline.png";
+import SEO from "@/components/SEO";
 
 type Hotline = { name: string; phone: string; text?: string; hours: string };
 
@@ -171,6 +172,12 @@ const Hotlines = () => {
   const [country, setCountry] = useState(countries[0]);
 
   return (
+    <>
+      <SEO
+        title="Crisis Hotlines — verified mental health support worldwide"
+        description="Free crisis hotlines and mental health support lines for 37+ countries. Trained counselors ready to listen, 24/7 where available."
+        path="/hotlines"
+      />
     <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
       <div className="mb-6 flex justify-center">
         <img src={dinoFlowers} alt="Dino holding flowers" className="h-32 w-32 object-contain md:h-40 md:w-40" />
@@ -209,6 +216,7 @@ const Hotlines = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

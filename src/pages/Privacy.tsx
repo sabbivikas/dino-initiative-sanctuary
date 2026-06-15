@@ -1,4 +1,12 @@
+import SEO from "@/components/SEO";
+
 const Privacy = () => (
+  <>
+    <SEO
+      title="Privacy & Safety"
+      description="Dino Initiative does not track, sell, or share your data. Learn how we handle privacy and the safety disclaimers that apply to our resources."
+      path="/privacy"
+    />
   <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
     <h1 className="mb-6 text-3xl font-bold md:text-4xl">Privacy &amp; Safety</h1>
 
@@ -32,6 +40,7 @@ const Privacy = () => (
       </section>
     </div>
   </div>
+  </>
 );
 
 export default Privacy;
