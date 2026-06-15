@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mail, AlertTriangle, Phone } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const Support = () => {
   return (
+    <>
+      <SEO
+        title="Support — get in touch"
+        description="Need help with the Dino app, want to send feedback, or report a safety concern? Reach out at Dinoinitiativesupport@gmail.com."
+        path="/support"
+      />
     <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
       <h1 className="mb-2 text-3xl font-bold md:text-4xl">Dino Support</h1>
       <p className="mb-8 text-muted-foreground leading-relaxed">
@@ -61,6 +68,7 @@ const Support = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 

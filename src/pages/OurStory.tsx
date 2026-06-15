@@ -6,6 +6,7 @@ import flowerImg from "@/assets/flower-smile.png";
 import flowerBlue from "@/assets/flower-smile-blue.png";
 import flowerYellow from "@/assets/flower-smile-yellow.png";
 import dinoMeditation from "@/assets/dino-meditation.png";
+import SEO from "@/components/SEO";
 
 const sections = [
   {
@@ -59,6 +60,12 @@ const dinoImages = [dinoBlueberry, dinoFriends, dinoFlowers, dinoComfort];
 
 const OurStory = () => {
   return (
+    <>
+      <SEO
+        title="Our Story"
+        description="Dino Initiative was created in honor of every person fighting quiet battles. A space for listening, kindness, and open conversation about mental health."
+        path="/our-story"
+      />
     <div className="mx-auto max-w-3xl px-6 py-20 md:py-32">
       <h1 className="mb-16 text-center text-4xl font-bold tracking-tight text-foreground md:text-5xl">
         Our Story
@@ -135,6 +142,7 @@ const OurStory = () => {
         <img src={flowerImg} alt="" className="w-10 origin-bottom animate-swing opacity-60 md:w-14" style={{ animationDelay: "1.5s" }} />
       </div>
     </div>
+    </>
   );
 };
 
