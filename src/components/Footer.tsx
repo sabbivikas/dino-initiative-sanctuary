@@ -23,6 +23,7 @@ const groups: { title: string; links: { to: string; label: string; external?: bo
     title: "About",
     links: [
       { to: "/our-story", label: "Our Story" },
+      { to: "/partners", label: "Partners & Investors" },
       { to: "/get-involved", label: "Get Involved" },
       { to: "/privacy", label: "Privacy & Safety" },
       { to: "/copyright", label: "Copyright" },
