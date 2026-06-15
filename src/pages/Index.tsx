@@ -87,7 +87,9 @@ const Index = () => {
                 See what&apos;s inside <ArrowRight className="h-4 w-4" />
               </a>
             </div>
-            <p className="mt-4 text-xs text-muted-foreground">Free forever · No account required</p>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Trusted by a community of <span className="font-semibold text-foreground">358,000+</span> across socials
+            </p>
           </div>
 
           <div className="relative mx-auto w-full max-w-sm">
@@ -106,15 +108,27 @@ const Index = () => {
         </section>
 
         {/* Trust strip */}
-        <section className="mb-24 border-y py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-xs uppercase tracking-wider text-muted-foreground">
-            <span>Built with care</span>
-            <span className="hidden h-1 w-1 rounded-full bg-muted-foreground/40 sm:inline-block" />
-            <span>Free for everyone</span>
-            <span className="hidden h-1 w-1 rounded-full bg-muted-foreground/40 sm:inline-block" />
-            <span>Privacy-first</span>
-            <span className="hidden h-1 w-1 rounded-full bg-muted-foreground/40 sm:inline-block" />
-            <span>No ads · No tracking</span>
+        <section className="mb-24 border-y py-8">
+          <p className="mb-5 text-center text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            A growing global community
+          </p>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <div className="text-center">
+              <div className="text-2xl font-bold md:text-3xl">358K+</div>
+              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Social community</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold md:text-3xl">37</div>
+              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Countries supported</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold md:text-3xl">100%</div>
+              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Free access</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold md:text-3xl">0</div>
+              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Ads or trackers</div>
+            </div>
           </div>
         </section>
 
