@@ -15,6 +15,8 @@ import screen03 from "@/assets/app-screen-03.png";
 import screen04 from "@/assets/app-screen-04.jpg";
 import screen05 from "@/assets/app-screen-05.jpg";
 import screen06 from "@/assets/app-screen-06.png";
+import SEO from "@/components/SEO";
+import { APP_STORE_URL } from "@/lib/appStore";
 
 const screenshots = [
   { src: screen01, alt: "Dino Initiative home screen with daily check-in and mood cards" },
@@ -55,6 +57,21 @@ const features = [
 
 const AppMarketing = () => {
   return (
+    <>
+      <SEO
+        title="The Dino App — Free emotional wellness companion for iOS"
+        description="Daily emotional check-ins, gratitude jar, guided breathing, and kind affirmations. Free on iOS — built with care."
+        path="/app"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "MobileApplication",
+          name: "Dino Initiative",
+          operatingSystem: "iOS",
+          applicationCategory: "HealthApplication",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          downloadUrl: "https://apps.apple.com/us/app/dino-initiative/id6763940737",
+        }}
+      />
     <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
       {/* Hero */}
       <section className="mb-16 text-center">
@@ -74,7 +91,7 @@ const AppMarketing = () => {
         <div className="mt-8 flex flex-col items-center gap-3">
           <p className="text-sm font-medium text-foreground">Download the Dino app — available on iOS</p>
           <a
-            href="https://apps.apple.com/us/app/dino-initiative/id6763940737"
+            href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Download Dino Initiative on the App Store"
@@ -170,6 +187,7 @@ const AppMarketing = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
