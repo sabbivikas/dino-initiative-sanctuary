@@ -201,6 +201,27 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Partners / Investors inbound */}
+        <section className="mb-24 flex flex-col items-start gap-6 rounded-3xl border bg-secondary/30 p-8 md:flex-row md:items-center md:justify-between md:p-12">
+          <div className="max-w-xl">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+              For Press · Investors · Partners
+            </p>
+            <h2 className="mb-3 text-2xl font-bold md:text-3xl">
+              Building the most trusted mental wellness companion.
+            </h2>
+            <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+              We're talking to aligned investors, press, NGOs, and partners reaching
+              young people on mental health. See how to work with us.
+            </p>
+          </div>
+          <Button asChild size="lg" className="shrink-0">
+            <Link to="/partners">
+              Work with us <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </section>
+
         {/* Crisis note */}
         <section className="mb-24 rounded-md border border-primary/30 px-6 py-5 text-center">
           <p className="mb-2 font-medium">If you or someone you know is in crisis</p>
