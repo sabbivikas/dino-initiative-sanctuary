@@ -215,11 +215,18 @@ const Index = () => {
               young people on mental health. See how to work with us.
             </p>
           </div>
-          <Button asChild size="lg" className="shrink-0">
-            <Link to="/partners">
-              Work with us <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex shrink-0 flex-col gap-3">
+            <Button asChild size="lg" className="shrink-0">
+              <a href="https://cal.com/vikassabbi/30min" target="_blank" rel="noopener noreferrer">
+                Book a 30-min call <ArrowUpRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="sm" className="shrink-0">
+              <Link to="/partners">
+                Or learn more <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </section>
 
         {/* Crisis note */}
