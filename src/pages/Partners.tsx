@@ -144,7 +144,7 @@ const Partners = () => {
                 The problem
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Youth mental health is in crisis globally. Care is expensive, stigmatized,
+                Mental health support is harder to access than it should be. Care is expensive, stigmatized,
                 and rarely reaches people before they're already struggling.
               </p>
             </div>
