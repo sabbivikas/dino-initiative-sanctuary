@@ -23,14 +23,14 @@ const inboundTracks = [
   {
     icon: Handshake,
     title: "Partnerships",
-    body: "NGOs, schools, universities, healthcare orgs, and brands aligned on youth mental wellbeing. Let's find a way to reach more people together.",
+    body: "NGOs, schools, universities, healthcare orgs, and brands aligned on accessible mental wellbeing. Let's find a way to reach more people together.",
     cta: "Start a conversation",
     subject: "Partnership inquiry — Dino Initiative",
   },
   {
     icon: Users,
     title: "Talent & Advisors",
-    body: "We're a small team with a big mission. If you bring deep expertise in clinical psychology, youth, distribution, or AI safety — we want to meet you.",
+    body: "We're a small team with a big mission. If you bring deep expertise in clinical psychology, mental health, distribution, or AI safety — we want to meet you.",
     cta: "Introduce yourself",
     subject: "Talent / advisor inquiry — Dino Initiative",
   },
@@ -144,7 +144,7 @@ const Partners = () => {
                 The problem
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Youth mental health is in crisis globally. Care is expensive, stigmatized,
+                Mental health support is harder to access than it should be. Care is expensive, stigmatized,
                 and rarely reaches people before they're already struggling.
               </p>
             </div>

@@ -116,7 +116,7 @@ const OurStory = () => {
               Our Mission
             </h2>
             <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              To create a safe and compassionate space where young people can learn about mental health, find trusted support, and feel seen, heard, and understood.
+              To create a safe and compassionate space where people can learn about mental health, find trusted support, and feel seen, heard, and understood.
             </p>
           </div>
         </div>

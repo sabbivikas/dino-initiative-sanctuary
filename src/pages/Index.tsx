@@ -211,8 +211,8 @@ const Index = () => {
               Building the most trusted mental wellness companion.
             </h2>
             <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-              We're talking to aligned investors, press, NGOs, and partners reaching
-              young people on mental health. See how to work with us.
+              We're talking to aligned investors, press, NGOs, and partners who care about
+              making mental health support accessible to everyone. See how to work with us.
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-3">
