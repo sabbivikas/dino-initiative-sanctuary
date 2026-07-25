@@ -1,85 +1,89 @@
-# Make Dino Initiative business-ready
 
-Goal: turn the site into a polished **App marketing site** that drives App Store installs, signals trust, and looks professional — in one coordinated pass. Keeps the existing minimal-editorial brand (black on white, sage accent, Dino Initiative font, hand-drawn dinos) and the existing features (Quiz, Kindness, Stories, Hotlines).
+## Goal
 
-> I couldn't auto-transcribe your video. The plan below covers the common feedback we usually see on sites at this stage (homepage doesn't sell the app, weak social previews, missing trust signals, thin marketing page). If the video raised a specific issue not covered here, tell me and I'll fold it in before we build.
+Rewrite copy, hierarchy, SEO, and structured data across the public site so Dino reads as a character-led personal intelligence product (starting with mental wellbeing), not a generic free mental health app. Keep visual identity, illustrations, screenshots, routes, App Store links, hotlines, support, privacy, and existing functionality untouched.
 
----
+## Scope
 
-## 1. Homepage rebuilt as the marketing landing (`/`)
+Files to edit:
+- `src/pages/Index.tsx` — homepage rewrite (hero, new sections, trust strip, features, mission, partners band, final CTA, crisis moved lower)
+- `src/pages/AppMarketing.tsx` — hero + feature cards + safety note rewrite, keep screenshots and App Store CTA
+- `src/pages/Partners.tsx` — reposition hero and body around character + personal intelligence; keep Cal.com link and contact
+- `src/pages/OurStory.tsx` — retell story around character → community → relationship → intelligence
+- `index.html` — sitewide title/description, OG/Twitter tags, JSON-LD (drop `MobileApplication` `HealthApplication` framing sitewide; keep it only on `/app` page-level JSON-LD if needed for App Store, otherwise switch to `SoftwareApplication` with a neutral category)
+- `src/components/SEO.tsx` — no structural change; per-page titles/descriptions updated by callers
+- `src/components/Header.tsx` / `src/components/Footer.tsx` — only if nav/footer labels or taglines still read "mental wellness app"; keep all existing links (Support, Hotlines, Privacy, Copyright, etc.)
+- Alt text: update image `alt` strings that currently describe Dino as "wellness app" to describe the illustration itself
 
-Today `/` is a generic "gentle place to check in" card with a small App Store banner buried below the fold. We rebuild it as a real app-marketing landing while keeping the brand voice:
+Out of scope (untouched): hotlines page, privacy page, support page, copyright page, App Store URLs, Cal.com URL, support email, crisis hotline data, video/stories functionality, kindness letters, quiz, resources page routing.
 
-- **Above-the-fold hero**: product name + one-line value prop + primary App Store badge (+ secondary "See features" anchor). Phone mockup using existing `app-screen-01.png` on the right (stacks on mobile).
-- **Social proof strip**: "Featured by / loved by" — leave a placeholder slot if you don't have press yet, or swap in App Store rating once available.
-- **Feature highlights** (3–5 cards): pulled from current `AppMarketing.tsx` (Check-Ins, Gratitude Jar, Breathing, Affirmations, Resources).
-- **Screenshot gallery**: the 6 existing `app-screen-0*.png` in a horizontal scroll / responsive grid.
-- **"Why Dino" / mission**: 2–3 sentences with the existing values copy, paired with `dino-comfort` illustration.
-- **Crisis note**: keep the existing bordered card linking to `/hotlines` (mandatory disclaimer stays).
-- **Final CTA band**: large App Store button + "Free • iOS" microcopy.
+## Homepage rewrite (`Index.tsx`)
 
-`/app` becomes a redirect to `/` (or a more detailed feature deep-dive — your call).
+Section order, top to bottom:
 
-## 2. Trust, legal & professional polish
+1. **Hero** — eyebrow "Personal intelligence with a face.", H1 "Dino gets to know you.", body as specced. Primary CTA = App Store button. Secondary CTA = "See how Dino works" link that scrolls to `#how-it-works`. Remove "Now on iOS · Free" and "gentle place to check in".
+2. **Relationship & world** — "It feels like visiting someone." with existing Dino artwork + one or two existing app screenshots.
+3. **Trust strip** — keep only verified: `358K+ community`, `37 countries`, plus qualitative: `Built around your baseline`, `Designed to know when to stay quiet`. Remove "100% free", "0 ads/trackers".
+4. **Intelligence section** — "The intelligence lives underneath the warmth." with the list of signals (check-ins, journaling, sleep, movement, gratitude, recurring causes, what has helped) framed against the user's own baseline.
+5. **How it works** (`id="how-it-works"`) — 3 steps: share naturally / connects patterns / brings context back.
+6. **Restraint section** — "It also knows when to leave you alone."
+7. **What Dino can do today** — shipped capabilities list. Small note that fuller predictive vision is rolling out.
+8. **Capability cards** — 6 cards replacing current feature cards (Understand patterns, Remember what matters, Notice what changes, Know when to show up, Know when to stay quiet, Help in ways that fit).
+9. **Why we made Dino** — replaces the mission/charity language.
+10. **Partners/Investors band** — "Building personal intelligence people can actually feel." Keep Cal.com + `/partners` link.
+11. **Crisis note** — moved down here (right before final CTA / footer), keeps link to `/hotlines`.
+12. **Final CTA** — "Meet the intelligence that grows with you." App Store button; "Free" allowed only as small factual caption.
 
-- **Footer rebuild**: 3-column layout — Product (App, Stories, Quiz, Kindness), Support (Resources, Hotlines, Support, Contact), Org (Our Story, Get Involved, Privacy, Copyright). Add tagline + small logo + © line + "Made with care" note.
-- **Header**: collapse nav into Product / Resources / About groupings with hover dropdowns on desktop (current 7-link flat nav is crowded); keep the red "Get help now" CTA prominent. Mobile menu stays a sheet.
-- **Contact / press email** surfaced on Support page (already exists: `Dinoinitiativesupport@gmail.com`) + add a "Press kit" section with logo download + 1-paragraph boilerplate.
-- **Disclaimer banner**: keep the mandatory "Dino Initiative does not provide medical advice" as a thin always-visible line above footer.
-- **404 page**: brand-aligned, links back home + to hotlines.
+## App page (`AppMarketing.tsx`)
 
-## 3. Conversion & SEO
+- Hero: eyebrow "Personal intelligence with a face.", H1 "A companion that learns you.", specced body. Keep App Store CTA and screenshot grid.
+- Replace 5 wellness feature cards with 5 capability cards: Learns your patterns / Builds around your baseline / Remembers useful context / Reaches out with restraint / Brings the right tool at the right moment. Each card mentions the underlying tools (check-ins, journaling, gratitude, breathing, weekly insights, resources) inside the explanation.
+- Safety note rewritten per spec.
+- Keep support CTA block, Cal link only if already present (it isn't — leave it out).
 
-- **`index.html` head cleanup**:
-  - Real `<title>`: `Dino Initiative — Free mental wellness companion app`
-  - Cleaner `meta description` (currently truncated mid-sentence)
-  - `author` → "Dino Initiative" (currently "Lovable")
-  - Add `<link rel="canonical" href="https://dinoinitiative.com/">`
-  - Fix OG/Twitter image (currently a Lovable-hosted social asset) → generate a branded 1200×630 social card with logo + tagline + dino, store via `lovable-assets`
-  - Add Organization JSON-LD (name, url, logo, sameAs)
-  - Add MobileApplication JSON-LD pointing to the App Store URL
-  - Replace `twitter:site @Lovable` with brand handle (or remove)
-- **Per-route titles/descriptions** via `react-helmet-async` for `/`, `/app`, `/resources`, `/hotlines`, `/our-story`, `/quiz`, `/kindness`, `/stories`, `/support`, `/privacy`.
-- **`public/sitemap.xml`**: regenerate to cover every public route at `https://dinoinitiative.com`.
-- **`public/robots.txt`**: add `Sitemap:` directive; keep `Disallow` for `/admin/*`.
-- **Favicon / app icons**: confirm a 32, 180 (apple-touch), and 512 icon are wired in `<head>` using the dino logo.
-- **App Store deep-link tracking**: append a UTM (`?pt=...&ct=website&mt=8`) to every App Store link for attribution in App Store Connect.
-- **Performance pass**: lazy-load below-fold images, set explicit `width`/`height` on hero, preload hero screenshot + logo, ensure no oversized PNGs (convert big screens to webp via `lovable-assets` if needed).
-- **Accessibility**: alt text audit, focus rings, color-contrast check on sage accent against white, semantic landmarks.
+## Partners page (`Partners.tsx`)
 
-## 4. Brand & visual polish
+- Hero: "Building personal intelligence with a face." + specced body.
+- Keep 4 inbound tracks, thesis block, contact CTA, Cal.com button, and support email. Rewrite thesis copy around the 7-beat story (faceless assistants → character → intelligence underneath → learns against baseline → restraint → mental wellbeing start → larger direction).
+- Remove clinical/outcomes language. Traction stats: keep 358K+, 37 countries, iOS, 100% free (as factual, not headline).
 
-- Keep the existing design tokens (sage `--primary`, Dino Initiative font, large editorial scale). No restyle of the system — only consistency fixes:
-  - Unify button/card radii (mix of `rounded-md`, `rounded-2xl`, `rounded-3xl` today).
-  - Standardize section spacing (use a single `<Section>` wrapper).
-  - Add a subtle, brand-correct hero background (paper-grain or hand-drawn floral motif using existing flower assets) — no gradients, no AI-default purple.
-  - Slight micro-interactions on App Store badges and feature cards (existing swing/float patterns).
+## Our Story (`OurStory.tsx`)
 
-## 5. What we are NOT doing
+- Keep visual layout (dashed arrows, staggered dinos, flower garden footer, `SEO`).
+- Rewrite the 5 body sections + Mission + Vision to walk through: Dino as character → community connection → people already treated Dino as someone they knew → built a product around that relationship → world you visit → personal intelligence learning from you → mental wellbeing as start → future of personal intelligence that lives with you.
+- Keep warm, human tone. Not pitch-y.
 
-- No new backend, auth, accounts, dashboards, or B2B features.
-- No restyle of the Quiz / Kindness / Stories / Hotlines pages (only header/footer changes touch them).
-- No video / pricing / blog scaffolding unless you ask.
-- No copy changes to the medical disclaimer.
+## SEO and structured data
 
----
+- `index.html`:
+  - Title: `Dino — Personal intelligence with a face`
+  - Description: specced
+  - Update `og:title`, `og:description`, `twitter:title`, `twitter:description` to match
+  - Keep OG image, favicon, site verification, canonical
+  - JSON-LD: keep Organization block. Replace `MobileApplication` + `HealthApplication` block with a neutral `SoftwareApplication` (no `HealthApplication` category) that keeps name, iOS, offers, downloadUrl. This avoids categorizing Dino primarily as medical.
+- Per-page `<SEO>` calls: rewrite title/description on Index, AppMarketing, Partners, OurStory. On `/app`, drop `HealthApplication` from its inline JSON-LD too.
 
-## Technical details
+## Language rules enforcement
 
-- **New/edited files (frontend only)**:
-  - `index.html` — head meta cleanup, JSON-LD, canonical, fixed OG/Twitter image
-  - `src/main.tsx` — wrap in `HelmetProvider`
-  - `src/pages/Index.tsx` — full marketing rebuild
-  - `src/pages/AppMarketing.tsx` — either becomes a deeper "Features" page or redirects to `/`
-  - `src/components/Header.tsx` — grouped nav
-  - `src/components/Footer.tsx` — 3-column rebuild
-  - `src/components/SEO.tsx` (new) — per-route `<Helmet>` helper
-  - `src/components/Section.tsx` (new) — standardized spacing wrapper
-  - Per-page Helmet usage in `/resources`, `/hotlines`, `/our-story`, `/quiz`, `/kindness`, `/stories`, `/support`, `/privacy`, `/app`
-  - `public/robots.txt`, `public/sitemap.xml` (or `scripts/generate-sitemap.ts`)
-  - Generated branded social card → `src/assets/social-card.jpg.asset.json`
-- **Dependencies**: add `react-helmet-async`.
-- **No DB / edge-function changes.**
-- **Verification**: build, run Playwright on `/`, `/app`, `/hotlines` at desktop + mobile viewports, screenshot, confirm head tags via DOM inspection.
+- No em dashes anywhere in new copy; use commas, periods, parentheses.
+- Avoid banned words: revolutionary, cutting-edge, transformative AI, AI-powered wellness, second brain, your best self, self-care journey, empowering users, holistic wellness, engagement, retention, "mental health app", excessive "free".
+- Use the specced anchor phrases where natural.
 
-After you approve, I'll implement everything in one pass. Reply with the video's key points if there's anything specific to fold in first.
+## Product truth guardrails
+
+- Present pattern-based reaching out as live.
+- Present predicting difficult days / night-before outreach / universal proactive support as "what Dino is building toward".
+- Do not invent user counts, retention, outcomes, or accuracy.
+- Only reference sleep and movement as signals if the app already exposes them; otherwise soften to "the signals you choose to share".
+
+## Verification
+
+- Run production build; fix any TS/lint/build errors.
+- Spot-check homepage, `/app`, `/partners`, `/our-story` on the running dev server at desktop and mobile widths via a quick Playwright screenshot pass.
+- Confirm all existing routes still resolve and App Store, Cal.com, hotlines, support links are intact.
+
+## Non-goals
+
+- No new illustrations, no new screenshots, no redesign of colors/typography/layout primitives.
+- No changes to auth, DB, edge functions, or any backend surface.
+- No changes to hotlines, privacy, copyright, support pages.
