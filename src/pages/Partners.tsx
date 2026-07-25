@@ -9,28 +9,28 @@ const inboundTracks = [
   {
     icon: TrendingUp,
     title: "Investors",
-    body: "We're building the most trusted free mental wellness companion for the next generation. If you back mission-driven consumer health, we'd love to talk.",
+    body: "We are building character led personal intelligence, starting with mental wellbeing. If you back long horizon consumer AI with a real product and a real community, we would like to talk.",
     cta: "Request our deck",
     subject: "Investor inquiry — Dino Initiative",
   },
   {
     icon: Newspaper,
     title: "Press & Media",
-    body: "Interviews, founder commentary, product reviews, mental health features. Press kit and high-res assets available on request.",
+    body: "Interviews, founder commentary, product reviews, features on character led AI and personal intelligence. Press kit and assets on request.",
     cta: "Reach out to press",
     subject: "Press inquiry — Dino Initiative",
   },
   {
     icon: Handshake,
     title: "Partnerships",
-    body: "NGOs, schools, universities, healthcare orgs, and brands aligned on accessible mental wellbeing. Let's find a way to reach more people together.",
+    body: "Researchers, clinicians, NGOs, universities, healthcare orgs, and brands aligned with human centered AI and accessible mental wellbeing.",
     cta: "Start a conversation",
     subject: "Partnership inquiry — Dino Initiative",
   },
   {
     icon: Users,
     title: "Talent & Advisors",
-    body: "We're a small team with a big mission. If you bring deep expertise in clinical psychology, mental health, distribution, or AI safety — we want to meet you.",
+    body: "Deep expertise in clinical psychology, personal AI, memory and reasoning systems, AI safety, or consumer product design. We would love to meet you.",
     cta: "Introduce yourself",
     subject: "Talent / advisor inquiry — Dino Initiative",
   },
@@ -39,8 +39,8 @@ const inboundTracks = [
 const highlights = [
   { value: "358K+", label: "Global community across socials" },
   { value: "37", label: "Countries with verified crisis support" },
-  { value: "100%", label: "Free access — no paywalls, no ads" },
   { value: "iOS", label: "Live on the App Store" },
+  { value: "Baseline", label: "Learning against yours, not a generic model" },
 ];
 
 const Partners = () => {
@@ -51,7 +51,7 @@ const Partners = () => {
     <>
       <SEO
         title="Partners & Investors — Dino Initiative"
-        description="Press, investor, and partnership inquiries for Dino Initiative — a free mental wellness companion serving a 358K+ global community across 37 countries."
+        description="Press, investor, and partnership inquiries for Dino — a character led personal intelligence, starting with mental wellbeing. 358K+ community, live on iOS."
         path="/partners"
       />
 
@@ -62,13 +62,18 @@ const Partners = () => {
             For Press · Investors · Partners
           </p>
           <h1 className="mb-6 text-4xl font-bold leading-[1.05] md:text-6xl">
-            Building the world's most trusted mental wellness companion.
+            Building character led personal intelligence.
           </h1>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Dino Initiative is a mission-driven mental wellness platform reaching a
-            community of <span className="font-semibold text-foreground">358,000+</span> across
-            socials, with verified crisis support in 37 countries. We're talking to
-            aligned investors, press, and partners — get in touch below.
+            Dino is a personal intelligence with a face. It learns from what someone shares over
+            time, understands them against their own baseline, and shows up with warmth through a
+            character people build a real relationship with. We are starting with mental wellbeing
+            because it is where being understood matters most, and where trust is hardest to earn.
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Live on iOS, with a community of{" "}
+            <span className="font-semibold text-foreground">358,000+</span> across socials and
+            verified crisis support in 37 countries.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -84,9 +89,7 @@ const Partners = () => {
               </a>
             </Button>
             <Button asChild size="lg" variant="ghost">
-              <Link to="/our-story">
-                Read our story
-              </Link>
+              <Link to="/our-story">Read our story</Link>
             </Button>
           </div>
         </section>
@@ -96,7 +99,7 @@ const Partners = () => {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {highlights.map((h) => (
               <div key={h.label} className="text-center md:text-left">
-                <div className="text-3xl font-bold md:text-4xl">{h.value}</div>
+                <div className="text-2xl font-bold md:text-3xl">{h.value}</div>
                 <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">
                   {h.label}
                 </div>
@@ -110,7 +113,7 @@ const Partners = () => {
           <div className="mb-10 max-w-2xl">
             <h2 className="mb-3 text-3xl font-bold md:text-4xl">Let's talk</h2>
             <p className="text-muted-foreground">
-              Pick the conversation that fits — we read every inbound message.
+              Pick the conversation that fits. We read every inbound message.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -135,36 +138,36 @@ const Partners = () => {
           </div>
         </section>
 
-        {/* Why now */}
+        {/* Thesis */}
         <section className="mb-20 rounded-3xl border bg-secondary/30 p-8 md:p-12">
           <h2 className="mb-6 text-2xl font-bold md:text-3xl">Why Dino, why now</h2>
           <div className="grid gap-8 md:grid-cols-3">
             <div>
               <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
-                The problem
+                The shift
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Mental health support is harder to access than it should be. Care is expensive, stigmatized,
-                and rarely reaches people before they're already struggling.
+                Software is moving from answering commands to holding personal context. The next
+                consumer products will not just respond, they will understand a specific person.
               </p>
             </div>
             <div>
               <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
-                Our wedge
+                The wedge
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                A friendly, free daily companion that meets people where they already
-                are — with tools grounded in evidence-based practice and a brand they
-                actually want to share.
+                A character people trust, a world people return to, and personal intelligence that
+                learns against each person's own baseline. Character is what turns capability into
+                a relationship.
               </p>
             </div>
             <div>
               <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
-                The traction
+                The proof
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                358K+ community across socials, live on iOS, verified crisis support
-                in 37 countries — built with a lean team and zero paid acquisition.
+                Live on iOS, a 358K+ community built with zero paid acquisition, verified crisis
+                support in 37 countries, and pattern based reaching out already in the product.
               </p>
             </div>
           </div>
