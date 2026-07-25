@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Cloud, Sparkles, Wind, Heart, LifeBuoy, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import flowerYellow from "@/assets/flower-smile-yellow.png";
 import dinoComfort from "@/assets/dino-comfort.png";
+import dinoFriends from "@/assets/dino-friends.png";
 import screen01 from "@/assets/app-screen-01.png";
 import screen02 from "@/assets/app-screen-02.png";
 import screen03 from "@/assets/app-screen-03.png";
@@ -13,20 +14,46 @@ import SEO from "@/components/SEO";
 import { APP_STORE_URL } from "@/lib/appStore";
 
 const screenshots = [
-  { src: screen01, alt: "Dino Initiative home with daily check-in" },
-  { src: screen02, alt: "Emotional weather check-in" },
-  { src: screen03, alt: "Breathe with Dino guided breathing" },
-  { src: screen04, alt: "Gratitude jar with kept moments" },
-  { src: screen05, alt: "Journal with memory cards" },
-  { src: screen06, alt: "Your garden growth tracking" },
+  { src: screen01, alt: "Dino home with a daily check-in card" },
+  { src: screen02, alt: "Emotional weather check-in inside the Dino app" },
+  { src: screen03, alt: "Guided breathing session with Dino" },
+  { src: screen04, alt: "Gratitude jar of small kept moments" },
+  { src: screen05, alt: "Journal with recent reflection cards" },
+  { src: screen06, alt: "A slowly growing garden that tracks personal rhythms" },
 ];
 
-const features = [
-  { icon: Cloud, title: "Daily Check-Ins", text: "Notice how you feel with simple emotional weather check-ins." },
-  { icon: Sparkles, title: "Gratitude Jar", text: "Collect small moments of thankfulness and revisit them." },
-  { icon: Wind, title: "Breathing", text: "Calming sessions to guide you through overwhelming moments." },
-  { icon: Heart, title: "Affirmations", text: "Kind words you can save and return to on hard days." },
-  { icon: LifeBuoy, title: "Resources", text: "Free mental health resources and global crisis hotlines." },
+const trust = [
+  { value: "358K+", label: "Social community" },
+  { value: "37", label: "Countries" },
+  { value: "Baseline", label: "Built around yours" },
+  { value: "Quiet", label: "When it should be" },
+];
+
+const capabilities = [
+  {
+    title: "Understand your patterns",
+    text: "Dino notices recurring feelings, causes, habits, and changes over time.",
+  },
+  {
+    title: "Remember what matters",
+    text: "The things you share become useful context, not entries that disappear after one session.",
+  },
+  {
+    title: "Notice what changes",
+    text: "Dino compares you with your own baseline, not a generic version of what someone should feel.",
+  },
+  {
+    title: "Know when to show up",
+    text: "Pattern based reaching out helps Dino respond when something meaningful shifts.",
+  },
+  {
+    title: "Know when to stay quiet",
+    text: "Dino is designed not to chase attention or talk just to keep you inside the app.",
+  },
+  {
+    title: "Help in ways that fit",
+    text: "Breathing, journaling, gratitude, recommendations, and supportive resources become tools Dino can use when they are actually useful.",
+  },
 ];
 
 const AppStoreBadge = ({ size = "md" }: { size?: "md" | "lg" }) => (
@@ -34,7 +61,7 @@ const AppStoreBadge = ({ size = "md" }: { size?: "md" | "lg" }) => (
     href={APP_STORE_URL}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Download Dino Initiative on the App Store"
+    aria-label="Download Dino on the App Store"
     className={`inline-flex items-center gap-3 rounded-xl bg-foreground text-background transition-opacity hover:opacity-90 ${
       size === "lg" ? "px-6 py-3.5" : "px-5 py-3"
     }`}
@@ -53,8 +80,8 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Dino Initiative — Free mental wellness companion app"
-        description="A gentle place to check in. Free iOS app for daily emotional check-ins, gratitude, breathing, and kind affirmations — plus global crisis hotlines and free mental health resources."
+        title="Dino — Personal intelligence with a face"
+        description="Dino is a character led personal intelligence that learns your patterns, remembers what matters, and looks out for you, starting with mental wellbeing."
         path="/"
         jsonLd={{
           "@context": "https://schema.org",
@@ -69,27 +96,26 @@ const Index = () => {
         <section className="mb-24 grid items-center gap-12 md:grid-cols-[1.1fr_1fr]">
           <div>
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-              Now on iOS · Free
+              Personal intelligence with a face.
             </p>
             <h1 className="mb-5 text-4xl font-bold leading-[1.05] md:text-6xl">
-              A gentle place to check in.
+              Dino gets to know you.
             </h1>
             <p className="mb-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Dino Initiative helps you slow down, notice how you feel, and build small daily habits
-              that support your mental wellbeing — without pressure or judgment.
+              Dino learns from how you feel, what you write, the signals you choose to share, what
+              keeps coming back, and what actually helps. It turns that into personal intelligence
+              that grows with you, inside a world that feels more like visiting someone than opening
+              an app.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <AppStoreBadge size="lg" />
               <a
-                href="#features"
+                href="#how-it-works"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-opacity hover:opacity-70"
               >
-                See what&apos;s inside <ArrowRight className="h-4 w-4" />
+                See how Dino works <ArrowRight className="h-4 w-4" />
               </a>
             </div>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Trusted by a community of <span className="font-semibold text-foreground">358,000+</span> across socials
-            </p>
           </div>
 
           <div className="relative mx-auto w-full max-w-sm">
@@ -97,7 +123,7 @@ const Index = () => {
             <div className="overflow-hidden rounded-[2rem] border border-border/60 bg-secondary/30 shadow-xl">
               <img
                 src={screen01}
-                alt="Dino Initiative home screen on iPhone"
+                alt="Dino home screen on iPhone"
                 width={400}
                 height={820}
                 loading="eager"
@@ -107,49 +133,170 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Relationship & world */}
+        <section className="mb-24 grid items-center gap-10 md:grid-cols-[1fr_auto]">
+          <div>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">It feels like visiting someone.</h2>
+            <p className="mb-4 leading-relaxed text-muted-foreground">
+              You do not open Dino to face another empty text box. You enter a world with a creature
+              who has a personality, changing weather, lanterns, and a globe showing other people
+              feeling things alongside you. Check ins and reflections feel like small rituals, not
+              forms to complete.
+            </p>
+            <p className="leading-relaxed text-muted-foreground">
+              The character and the world are not decoration. They are how people build trust and
+              return naturally, without being pulled.
+            </p>
+          </div>
+          <img
+            src={dinoFriends}
+            alt="Dino character standing beside two friends"
+            width={220}
+            height={220}
+            loading="lazy"
+            className="mx-auto h-40 w-40 object-contain md:h-52 md:w-52"
+          />
+        </section>
+
         {/* Trust strip */}
         <section className="mb-24 border-y py-8">
-          <p className="mb-5 text-center text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-            A growing global community
-          </p>
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold md:text-3xl">358K+</div>
-              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Social community</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold md:text-3xl">37</div>
-              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Countries supported</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold md:text-3xl">100%</div>
-              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Free access</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold md:text-3xl">0</div>
-              <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Ads or trackers</div>
-            </div>
+            {trust.map((t) => (
+              <div key={t.label} className="text-center">
+                <div className="text-2xl font-bold md:text-3xl">{t.value}</div>
+                <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">{t.label}</div>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Features */}
+        {/* Intelligence */}
+        <section className="mb-24">
+          <div className="mx-auto mb-8 max-w-2xl text-center">
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">
+              The intelligence lives underneath the warmth.
+            </h2>
+            <p className="leading-relaxed text-muted-foreground">
+              Dino connects what you share over time. It notices recurring feelings, causes, habits,
+              changes, and the moments that seem to help. The result is not a generic answer. It is
+              context that belongs to you.
+            </p>
+          </div>
+          <div className="mx-auto grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-3">
+            {[
+              "Emotional check ins",
+              "Journaling and reflections",
+              "Gratitude entries",
+              "Recurring causes and feelings",
+              "What has helped before",
+              "The signals you choose to share",
+            ].map((s) => (
+              <div
+                key={s}
+                className="rounded-xl border border-border/60 bg-card px-4 py-3 text-center text-sm text-muted-foreground"
+              >
+                {s}
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
+            Everything is understood against your own baseline, not a generic average of who you
+            should be.
+          </p>
+        </section>
+
+        {/* How it works */}
+        <section id="how-it-works" className="mb-24">
+          <h2 className="mb-10 text-center text-3xl font-bold md:text-4xl">How Dino works</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                n: "01",
+                title: "You share naturally",
+                body: "Through check ins, journaling, gratitude, and small reflections. No forms, no pressure.",
+              },
+              {
+                n: "02",
+                title: "Dino connects the patterns",
+                body: "It notices what repeats, what changes, what affects you, and what seems to help.",
+              },
+              {
+                n: "03",
+                title: "Dino brings context back",
+                body: "It reaches out or offers something useful when a real pattern warrants it.",
+              },
+            ].map((s) => (
+              <div key={s.n} className="rounded-2xl border border-border/60 bg-card p-6">
+                <div className="mb-3 text-xs font-semibold tracking-[0.2em] text-primary">{s.n}</div>
+                <h3 className="mb-2 text-lg font-semibold">{s.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Restraint */}
+        <section className="mb-24 rounded-3xl border bg-secondary/30 p-8 md:p-12">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              It also knows when to leave you alone.
+            </h2>
+            <p className="leading-relaxed text-muted-foreground">
+              Most companion products are built to keep the conversation going. Dino is built to
+              earn trust by not overreaching. Most of the time, it can decide you are doing fine and
+              stay quiet. When it does show up, it should feel considered, not like another app
+              trying to pull you back in.
+            </p>
+          </div>
+        </section>
+
+        {/* What Dino can do today */}
+        <section className="mb-24">
+          <div className="mx-auto mb-8 max-w-2xl text-center">
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">What Dino can do today</h2>
+            <p className="text-muted-foreground">
+              Shipped, in your pocket, working right now.
+            </p>
+          </div>
+          <ul className="mx-auto max-w-2xl space-y-3">
+            {[
+              "Learn from emotional check ins and reflections",
+              "Identify recurring personal patterns",
+              "Create weekly rhythms and insights",
+              "Reach out based on meaningful patterns",
+              "Remember useful personal context",
+              "Offer breathing, journaling, gratitude, recommendations, and supportive resources when relevant",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-3 rounded-xl border border-border/60 bg-card px-4 py-3 text-sm leading-relaxed"
+              >
+                <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-muted-foreground">
+            Pattern based reaching out is live. The fuller vision (predicting a difficult day in
+            advance, showing up the night before) is what Dino is building toward.
+          </p>
+        </section>
+
+        {/* Capability cards */}
         <section id="features" className="mb-24">
           <div className="mb-10 text-center">
-            <h2 className="mb-3 text-3xl font-bold md:text-4xl">What&apos;s inside Dino</h2>
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">What makes Dino different</h2>
             <p className="mx-auto max-w-xl text-muted-foreground">
-              Small, gentle tools for everyday emotional wellbeing.
+              Character on the surface. Personal intelligence underneath.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map(({ icon: Icon, title, text }) => (
+            {capabilities.map(({ title, text }) => (
               <div
                 key={title}
                 className="rounded-2xl border border-border/60 bg-card p-6 transition-colors hover:bg-secondary/40"
               >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                  <Icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="mb-1.5 text-lg font-semibold">{title}</h3>
+                <h3 className="mb-2 text-lg font-semibold">{title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{text}</p>
               </div>
             ))}
@@ -158,7 +305,7 @@ const Index = () => {
 
         {/* Screenshot gallery */}
         <section className="mb-24">
-          <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">A look inside</h2>
+          <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">A look inside the world</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {screenshots.map(({ src, alt }) => (
               <div
@@ -171,11 +318,11 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Mission */}
+        {/* Why we made Dino */}
         <section className="mb-24 grid items-center gap-10 rounded-3xl border bg-secondary/30 p-8 md:grid-cols-[auto_1fr] md:p-12">
           <img
             src={dinoComfort}
-            alt="Dino offering comfort"
+            alt="Dino sitting close, offering quiet company"
             width={160}
             height={160}
             loading="lazy"
@@ -184,11 +331,14 @@ const Index = () => {
           <div className="text-center md:text-left">
             <h2 className="mb-3 text-2xl font-bold md:text-3xl">Why we made Dino</h2>
             <p className="mb-3 leading-relaxed text-muted-foreground">
-              We believe everyone deserves access to support — no barriers, no judgment. Our resources
-              are created with care and grounded in evidence-based practices.
+              Most software waits for a command, gives an answer, and forgets the person. Dino is
+              being built differently. It carries context, notices patterns, and responds with
+              warmth through a character people can actually care about.
             </p>
             <p className="leading-relaxed text-muted-foreground">
-              You are not alone, and reaching out is a sign of strength.
+              Mental wellbeing is where we are starting, because it is where being understood
+              matters most and trust is hardest to earn. The direction is larger, personal
+              intelligence that lives with you.
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
               <Button asChild variant="outline">
@@ -208,11 +358,13 @@ const Index = () => {
               For Press · Investors · Partners
             </p>
             <h2 className="mb-3 text-2xl font-bold md:text-3xl">
-              Building the most trusted mental wellness companion.
+              Building personal intelligence people can actually feel.
             </h2>
             <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-              We're talking to aligned investors, press, NGOs, and partners who care about
-              making mental health support accessible to everyone. See how to work with us.
+              Dino combines character, emotional design, and personal intelligence to create
+              something people form a real relationship with. We are speaking with aligned
+              investors, researchers, partners, and organizations interested in the future of
+              personal intelligence and human centered AI.
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-3">
@@ -229,8 +381,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Crisis note */}
-        <section className="mb-24 rounded-md border border-primary/30 px-6 py-5 text-center">
+        {/* Crisis note (moved lower) */}
+        <section className="mb-16 rounded-md border border-primary/30 px-6 py-5 text-center">
           <p className="mb-2 font-medium">If you or someone you know is in crisis</p>
           <p className="text-sm text-muted-foreground">
             Please reach out to a trained counselor.{" "}
@@ -242,18 +394,19 @@ const Index = () => {
 
         {/* Final CTA */}
         <section className="mb-20 rounded-3xl border bg-foreground px-6 py-12 text-center text-background md:py-16">
-          <h2 className="mx-auto mb-3 max-w-xl text-3xl font-bold md:text-4xl">
-            Take Dino with you, everywhere.
+          <h2 className="mx-auto mb-3 max-w-2xl text-3xl font-bold md:text-4xl">
+            Meet the intelligence that grows with you.
           </h2>
-          <p className="mx-auto mb-6 max-w-md text-sm opacity-80">
-            Daily check-ins, gratitude, breathing, and gentle affirmations — in your pocket.
+          <p className="mx-auto mb-6 max-w-lg text-sm opacity-80">
+            A character to return to, a world that remembers you, and personal intelligence that
+            becomes more useful over time.
           </p>
           <div className="flex flex-col items-center gap-3">
             <a
               href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Download Dino Initiative on the App Store"
+              aria-label="Download Dino on the App Store"
               className="inline-flex items-center gap-3 rounded-xl bg-background px-6 py-3.5 text-foreground transition-opacity hover:opacity-90"
             >
               <svg viewBox="0 0 384 512" className="h-8 w-8 fill-current" aria-hidden="true">
@@ -264,7 +417,7 @@ const Index = () => {
                 <span className="text-base font-semibold">App Store</span>
               </span>
             </a>
-            <p className="text-xs opacity-70">Free · iOS</p>
+            <p className="text-xs opacity-70">iOS, free</p>
           </div>
         </section>
 
