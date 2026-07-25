@@ -17,13 +17,13 @@ const sections = [
     text: "A person can be bright, active, and smiling through everyday life, while quietly carrying feelings no one else can see. Many people learn to hide their pain behind strength, to look okay even when they are hurting inside.",
   },
   {
-    text: "It is truly devastating how many people carry silent pain while appearing strong on the outside, and how many voices go unheard simply because suffering is invisible. Dino Initiative was created in honor of every person fighting quiet battles and for those whose struggles are often unseen.",
+    text: "Dino began as a small companion. A character with a face, a voice, and a world you could return to on hard days. What started as comfort quickly showed us something bigger. When people trust a character, they share what is really going on. And when they share what is really going on, software can finally do something useful.",
   },
   {
-    text: "What began as grief slowly became a promise to listen more closely, speak more openly about mental health, and create a space where no one feels alone in their struggles.",
+    text: "So the character grew a memory. It began to notice patterns, remember what mattered, and understand each person against their own baseline. The warmth stayed on the surface. Personal intelligence formed underneath.",
   },
   {
-    text: "If this project can comfort even one person, encourage one conversation, or help someone choose to keep going, then its purpose continues through hope, kindness, and care.",
+    text: "That is what Dino is becoming. A character led personal intelligence. A friend on the outside, real understanding on the inside. Mental wellbeing is where we start. It is not where the direction ends.",
   },
 ];
 
@@ -63,7 +63,7 @@ const OurStory = () => {
     <>
       <SEO
         title="Our Story"
-        description="Dino Initiative was created in honor of every person fighting quiet battles. A space for listening, kindness, and open conversation about mental health."
+        description="Dino began as a character people could return to. It is becoming a personal intelligence that understands each person against their own baseline, starting with mental wellbeing."
         path="/our-story"
       />
     <div className="mx-auto max-w-3xl px-6 py-20 md:py-32">
@@ -116,7 +116,9 @@ const OurStory = () => {
               Our Mission
             </h2>
             <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              To create a safe and compassionate space where people can learn about mental health, find trusted support, and feel seen, heard, and understood.
+              To build a personal intelligence people trust — one that understands each person on
+              their own terms, shows up with warmth through a character, and knows when to help and
+              when to leave you alone.
             </p>
           </div>
         </div>
@@ -128,7 +130,9 @@ const OurStory = () => {
             Our Vision
           </h2>
           <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            We imagine a world where mental health is spoken about without fear or stigma — asking for help is seen as strength, not weakness — and no one has to struggle in silence. Dino Initiative exists to turn loss into light, to offer hope, connection, and support to anyone who needs it.
+            A future where personal intelligence is character led, human centered, and actually
+            useful — starting with mental wellbeing, and growing into a companion that carries real
+            context across the parts of life that matter.
           </p>
         </div>
       </div>
