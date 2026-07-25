@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  Cloud,
-  Sparkles,
-  Wind,
-  Heart,
-  LifeBuoy,
-  AlertTriangle,
-  Mail,
-} from "lucide-react";
+import { AlertTriangle, Mail } from "lucide-react";
 import screen01 from "@/assets/app-screen-01.png";
 import screen02 from "@/assets/app-screen-02.png";
 import screen03 from "@/assets/app-screen-03.png";
@@ -19,39 +11,38 @@ import SEO from "@/components/SEO";
 import { APP_STORE_URL } from "@/lib/appStore";
 
 const screenshots = [
-  { src: screen01, alt: "Dino Initiative home screen with daily check-in and mood cards" },
-  { src: screen02, alt: "Emotional weather check-in screen" },
-  { src: screen03, alt: "Breathe with Dino guided breathing screen" },
-  { src: screen04, alt: "Gratitude jar with collected keepsakes" },
-  { src: screen05, alt: "Journal screen with recent memory cards" },
-  { src: screen06, alt: "Your garden growth tracking screen" },
+  { src: screen01, alt: "Dino home with a daily check-in card" },
+  { src: screen02, alt: "Emotional weather check-in inside the Dino app" },
+  { src: screen03, alt: "Guided breathing session with Dino" },
+  { src: screen04, alt: "Gratitude jar of small kept moments" },
+  { src: screen05, alt: "Journal with recent reflection cards" },
+  { src: screen06, alt: "A slowly growing garden that tracks personal rhythms" },
 ];
 
-const features = [
+const capabilities = [
   {
-    icon: Cloud,
-    title: "Daily Emotional Check-Ins",
-    text: "Notice how you feel each day through simple emotional weather check-ins.",
+    title: "Learns your emotional patterns",
+    text: "Simple check ins and reflections become a picture of what you actually feel over time, on your terms.",
   },
   {
-    icon: Sparkles,
-    title: "Gratitude Jar",
-    text: "Collect small moments of thankfulness and revisit them whenever you need comfort.",
+    title: "Remembers what matters",
+    text: "The context you share sticks around and becomes useful, instead of disappearing at the end of the session.",
   },
   {
-    icon: Wind,
-    title: "Breathing Exercises",
-    text: "Calming breathing sessions to guide you through stressful or overwhelming moments.",
+    title: "Notices what changes",
+    text: "Dino compares you with your own baseline. It sees when something shifts, not just when something looks unusual to a generic model.",
   },
   {
-    icon: Heart,
-    title: "Daily Affirmations",
-    text: "Kind words you can save and return to on hard days.",
+    title: "Reaches out with intent",
+    text: "Pattern based check ins mean Dino shows up when a real signal warrants it, not to keep you inside the app.",
   },
   {
-    icon: LifeBuoy,
-    title: "Supportive Resources",
-    text: "Mental health and emotional wellbeing resources for moments you need extra support.",
+    title: "Offers help that fits",
+    text: "Breathing, journaling, gratitude, recommendations, and supportive resources are tools Dino can use when they are actually useful.",
+  },
+  {
+    title: "Stays quiet on purpose",
+    text: "Most of the time Dino should decide you are doing fine and leave you alone. Restraint is the point.",
   },
 ];
 
@@ -59,15 +50,15 @@ const AppMarketing = () => {
   return (
     <>
       <SEO
-        title="The Dino App — Free emotional wellness companion for iOS"
-        description="Daily emotional check-ins, gratitude jar, guided breathing, and kind affirmations. Free on iOS — built with care."
+        title="The Dino App — Personal intelligence, in your pocket"
+        description="Dino is a character led personal intelligence for iOS. It learns your patterns, remembers what matters, and quietly looks out for you."
         path="/app"
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "MobileApplication",
-          name: "Dino Initiative",
+          "@type": "SoftwareApplication",
+          name: "Dino",
           operatingSystem: "iOS",
-          applicationCategory: "HealthApplication",
+          applicationCategory: "LifestyleApplication",
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
           downloadUrl: "https://apps.apple.com/us/app/dino-initiative/id6763940737",
         }}
@@ -75,26 +66,25 @@ const AppMarketing = () => {
     <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
       {/* Hero */}
       <section className="mb-16 text-center">
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10">
-          <Heart className="h-10 w-10 text-primary" />
-        </div>
-        <h1 className="mb-4 text-5xl font-bold md:text-6xl">Dino</h1>
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+          Personal intelligence with a face
+        </p>
+        <h1 className="mb-4 text-5xl font-bold md:text-6xl">Meet Dino.</h1>
         <p className="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-          A gentle emotional wellness companion for daily check-ins, gratitude,
-          breathing, affirmations, and small moments of self-care.
+          A character led personal intelligence that learns your patterns, remembers what matters,
+          and looks out for you, starting with your emotional wellbeing.
         </p>
         <p className="mx-auto max-w-2xl leading-relaxed text-muted-foreground">
-          Dino helps you slow down, understand how you feel, and build simple
-          daily habits that support your emotional wellbeing. It is designed to
-          feel comforting, friendly, and easy to use.
+          You share naturally through check ins, reflections, and small moments. Dino connects those
+          signals over time and brings context back when it can actually help.
         </p>
         <div className="mt-8 flex flex-col items-center gap-3">
-          <p className="text-sm font-medium text-foreground">Download the Dino app — available on iOS</p>
+          <p className="text-sm font-medium text-foreground">Available on iOS</p>
           <a
             href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Download Dino Initiative on the App Store"
+            aria-label="Download Dino on the App Store"
             className="inline-flex items-center gap-3 rounded-xl bg-foreground px-5 py-3 text-background transition-opacity hover:opacity-90"
           >
             <svg viewBox="0 0 384 512" className="h-7 w-7 fill-current" aria-hidden="true">
@@ -116,43 +106,39 @@ const AppMarketing = () => {
               key={src}
               className="overflow-hidden rounded-2xl border border-border/60 bg-secondary/30"
             >
-              <img
-                src={src}
-                alt={alt}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
+              <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover" />
             </div>
           ))}
         </div>
         <p className="mt-3 text-center text-xs text-muted-foreground">
-          A look inside Dino
+          Inside Dino: a character, a world, and personal intelligence underneath.
         </p>
       </section>
 
-      {/* Features */}
+      {/* Capabilities */}
       <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-semibold md:text-4xl">
-          What Dino offers
-        </h2>
+        <h2 className="mb-8 text-center text-3xl font-semibold md:text-4xl">What Dino does</h2>
         <div className="space-y-4">
-          {features.map(({ icon: Icon, title, text }) => (
+          {capabilities.map(({ title, text }) => (
             <div
               key={title}
               className="rounded-xl border border-border/60 bg-card p-5 transition-colors hover:bg-secondary/40"
             >
-              <div className="mb-2 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                  <Icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="text-xl font-medium">{title}</h3>
-              </div>
-              <p className="text-base leading-relaxed text-muted-foreground">
-                {text}
-              </p>
+              <h3 className="mb-2 text-xl font-medium">{title}</h3>
+              <p className="text-base leading-relaxed text-muted-foreground">{text}</p>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Where we start */}
+      <section className="mb-16 rounded-2xl border bg-secondary/30 p-8 md:p-10">
+        <h2 className="mb-3 text-2xl font-semibold md:text-3xl">Starting with wellbeing</h2>
+        <p className="leading-relaxed text-muted-foreground">
+          Mental wellbeing is the first domain because it is where being understood matters most
+          and trust is hardest to earn. If personal intelligence works here, it can work anywhere
+          in your life. That is where Dino is going.
+        </p>
       </section>
 
       {/* Important Note */}
@@ -162,9 +148,9 @@ const AppMarketing = () => {
           Important Note
         </div>
         <p className="text-sm leading-relaxed text-muted-foreground">
-          Dino is not a replacement for therapy, medical advice, emergency care,
-          or professional mental health treatment. It is a gentle companion for
-          everyday reflection, comfort, and self-care.
+          Dino is not a replacement for therapy, medical advice, emergency care, or professional
+          mental health treatment. It is a personal companion for everyday reflection, context, and
+          care.
         </p>
       </section>
 
