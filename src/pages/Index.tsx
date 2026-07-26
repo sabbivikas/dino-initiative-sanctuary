@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Check, X } from "lucide-react";
 import SEO from "@/components/SEO";
