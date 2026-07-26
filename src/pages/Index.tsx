@@ -531,7 +531,7 @@ const Index = () => {
   return (
     <div className="story-page">
       <SEO
-        title="Dino — personal intelligence with a face"
+        title="Dino — personal intelligence for your everyday life"
         description="A character-led personal intelligence that gets to know you, notices when something changes, and knows when to stay quiet. Starting with mental wellbeing."
       />
       <ChapterNav />
@@ -779,7 +779,7 @@ const Index = () => {
         <div className="mx-auto max-w-6xl px-6 py-24">
           <div className="max-w-2xl">
             <Eyebrow>06 / a different kind of presence</Eyebrow>
-            <Reveal><h2>Dino is personal intelligence with a face.</h2></Reveal>
+            <Reveal><h2>Dino is personal intelligence for your everyday life.</h2></Reveal>
             <Reveal delay={140}>
               <p className="lede mt-5 text-foreground/80">
                 Not a chatbot with a mascot. A character, in a world, that gets to know you.
@@ -999,7 +999,7 @@ const Index = () => {
                   </span>
                 </a>
               </div>
-              <p className="text-xs text-background/60">Personal intelligence with a face.</p>
+              <p className="text-xs text-background/60">Personal intelligence for your everyday life.</p>
             </div>
           </Reveal>
         </div>
