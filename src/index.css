@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Caveat:wght@400;500&display=swap');
 
 @font-face {
   font-family: 'Dino Initiative';
@@ -132,3 +132,41 @@
 @keyframes blink {
   50% { opacity: 0; }
 }
+
+/* --- Storybook homepage helpers --- */
+.font-editorial { font-family: 'Fraunces', 'Times New Roman', serif; font-optical-sizing: auto; }
+.font-sans-soft { font-family: 'Inter', system-ui, sans-serif; }
+.font-hand { font-family: 'Caveat', cursive; }
+
+/* Reset the global oversized headings/body ONLY inside the story page */
+.story-page { font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.7; color: hsl(var(--foreground)); }
+.story-page h1, .story-page h2, .story-page h3, .story-page h4, .story-page p { font-weight: 400; letter-spacing: -0.005em; }
+.story-page h1 { font-family: 'Fraunces', serif; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; font-weight: 300; letter-spacing: -0.02em; }
+.story-page h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.15; font-weight: 400; letter-spacing: -0.015em; }
+.story-page h3 { font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.4; font-weight: 500; }
+.story-page p  { font-size: 1.05rem; line-height: 1.75; font-weight: 400; }
+.story-page .lede { font-family: 'Fraunces', serif; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.45; font-weight: 300; }
+.story-page .eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+
+/* paper texture */
+.paper-grain { background-image: radial-gradient(hsl(0 0% 0% / 0.025) 1px, transparent 1px); background-size: 3px 3px; }
+
+/* drifting clouds / lanterns */
+@keyframes drift-x { 0% { transform: translateX(-10%);} 100% { transform: translateX(110%);} }
+@keyframes lantern-bob { 0%,100% { transform: translateY(0) rotate(-1deg);} 50% { transform: translateY(-10px) rotate(1deg);} }
+@keyframes firefly { 0%,100% { opacity: .2; transform: translate(0,0);} 50% { opacity: 1; transform: translate(6px,-8px);} }
+@keyframes sky-shift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+@keyframes ring-in { from { stroke-dashoffset: 400; opacity:0;} to { stroke-dashoffset: 0; opacity:1;} }
+.animate-drift { animation: drift-x 60s linear infinite; }
+.animate-drift-slow { animation: drift-x 110s linear infinite; }
+.animate-lantern { animation: lantern-bob 5s ease-in-out infinite; }
+.animate-firefly { animation: firefly 3.4s ease-in-out infinite; }
+
+/* dashed loop */
+.dash-loop { stroke-dasharray: 4 6; animation: loop-dash 2s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift, .animate-drift-slow, .animate-lantern, .animate-firefly, .dash-loop,
+  .animate-float, .animate-float-slow, .animate-twinkle, .animate-glow-pulse { animation: none !important; }
+}
+
