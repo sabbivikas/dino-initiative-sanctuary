@@ -9,15 +9,12 @@ import { APP_STORE_URL } from "@/lib/appStore";
 import flowerYellow from "@/assets/flower-smile-yellow.png";
 import flowerBlue from "@/assets/flower-smile-blue.png";
 import dinoComfort from "@/assets/dino-comfort.png";
-import dinoFriends from "@/assets/dino-friends.png";
 import dinoMeditation from "@/assets/dino-meditation.png";
-import dinoBlueberry from "@/assets/dino-blueberry.png";
 import dinoFlowers from "@/assets/dino-flowers.png";
 import screen01 from "@/assets/app-screen-01.png";
 import screen02 from "@/assets/app-screen-02.png";
 import screen03 from "@/assets/app-screen-03.png";
 import screen04 from "@/assets/app-screen-04.jpg";
-import screen05 from "@/assets/app-screen-05.jpg";
 import screen06 from "@/assets/app-screen-06.png";
 
 /* ---------- Small pieces ---------- */
