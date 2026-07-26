@@ -492,16 +492,11 @@ const Hero = () => {
         </Reveal>
       </div>
 
-      {/* Dino + annotation */}
+      {/* Landscape */}
       <div className="absolute bottom-0 left-0 right-0">
-        <div className="relative mx-auto max-w-4xl">
-          <img src={dinoComfort} alt="Dino" className="mx-auto h-44 w-auto md:h-56" width="240" height="240" decoding="async" />
-          <Annotation className="absolute right-[18%] top-4 rotate-[-6deg] md:right-[26%]">
-            ↙ someone is here
-          </Annotation>
-        </div>
         <Grass />
       </div>
+
     </section>
   );
 };
