@@ -45,12 +45,11 @@ const AppStoreBadge = ({ variant = "dark", size = "lg" }: { variant?: "dark" | "
   );
 };
 
-const SectionLabel = ({ children }: { children: ReactChildren }) => (
+const SectionLabel = ({ children }: { children: ReactNode }) => (
   <p className="mb-6 text-xs font-medium uppercase tracking-[0.24em] text-primary">{children}</p>
 );
-type ReactChildren = React.ReactNode;
 
-const SourceTag = ({ children }: { children: ReactChildren }) => (
+const SourceTag = ({ children }: { children: ReactNode }) => (
   <p className="mt-3 text-[11px] uppercase tracking-widest text-muted-foreground/80">Source: {children}</p>
 );
 
