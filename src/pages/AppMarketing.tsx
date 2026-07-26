@@ -67,7 +67,7 @@ const AppMarketing = () => {
       {/* Hero */}
       <section className="mb-16 text-center">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-          Personal intelligence with a face
+          Personal intelligence for your everyday life
         </p>
         <h1 className="mb-4 text-5xl font-bold md:text-6xl">Meet Dino.</h1>
         <p className="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">

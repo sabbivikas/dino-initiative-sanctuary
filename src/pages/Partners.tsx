@@ -65,7 +65,7 @@ const Partners = () => {
             Building character led personal intelligence.
           </h1>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Dino is a personal intelligence with a face. It learns from what someone shares over
+            Dino is personal intelligence for your everyday life. It learns from what someone shares over
             time, understands them against their own baseline, and shows up with warmth through a
             character people build a real relationship with. We are starting with mental wellbeing
             because it is where being understood matters most, and where trust is hardest to earn.
