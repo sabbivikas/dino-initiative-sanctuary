@@ -76,11 +76,40 @@ export default {
           "0%, 100%": { transform: "rotate(-6deg)" },
           "50%": { transform: "rotate(6deg)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "1" },
+        },
+        twinkle: {
+          "0%, 100%": { opacity: "0.2" },
+          "50%": { opacity: "1" },
+        },
+        "loop-dash": {
+          to: { strokeDashoffset: "-40" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         swing: "swing 3s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+        "float-slow": "float-slow 9s ease-in-out infinite",
+        "fade-up": "fade-up 0.8s ease-out both",
+        "glow-pulse": "glow-pulse 4s ease-in-out infinite",
+        twinkle: "twinkle 3s ease-in-out infinite",
+        "loop-dash": "loop-dash 2s linear infinite",
       },
     },
   },
