@@ -534,7 +534,7 @@ const Index = () => {
         title="Dino — personal intelligence for your everyday life"
         description="A character-led personal intelligence that gets to know you, notices when something changes, and knows when to stay quiet. Starting with mental wellbeing."
       />
-      <ChapterNav />
+      
 
       {/* HERO */}
       <Hero />
