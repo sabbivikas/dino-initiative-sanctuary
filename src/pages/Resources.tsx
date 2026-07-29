@@ -97,13 +97,28 @@ const topics = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: topics.map((topic) => ({
+    "@type": "Question",
+    name: `How can I cope with ${topic.title.toLowerCase()}?`,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: `${topic.tools.join(" ")} ${topic.reach}`,
+    },
+  })),
+};
+
 const Resources = () => (
   <>
     <SEO
       title="Mental health resources — coping tools and journaling prompts"
       description="Free, gentle resources for anxiety, low mood, sleep, focus, and more. Practical coping tools, journaling prompts, and guidance on when to reach out for support."
       path="/resources"
+      jsonLd={faqSchema}
     />
+
   <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
     <h1 className="mb-2 text-3xl font-bold md:text-4xl">Resources</h1>
     <p className="mb-10 text-muted-foreground">

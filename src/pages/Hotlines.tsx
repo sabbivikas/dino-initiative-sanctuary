@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -171,13 +171,39 @@ const countries = Object.keys(data);
 const Hotlines = () => {
   const [country, setCountry] = useState(countries[0]);
 
+  const hotlineSchema = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `Crisis hotlines in ${country}`,
+      itemListElement: (data[country] ?? []).map((line, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Organization",
+          name: line.name,
+          areaServed: country,
+          contactPoint: {
+            "@type": "ContactPoint",
+            contactType: "Crisis support hotline",
+            telephone: line.phone,
+            hoursAvailable: line.hours,
+          },
+        },
+      })),
+    }),
+    [country],
+  );
+
   return (
     <>
       <SEO
         title="Crisis Hotlines — verified mental health support worldwide"
         description="Free crisis hotlines and mental health support lines for 37+ countries. Trained counselors ready to listen, 24/7 where available."
         path="/hotlines"
+        jsonLd={hotlineSchema}
       />
+
     <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
       <div className="mb-6 flex justify-center">
         <img src={dinoFlowers} alt="Dino holding flowers" className="h-32 w-32 object-contain md:h-40 md:w-40" />
