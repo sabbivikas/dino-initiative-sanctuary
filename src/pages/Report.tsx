@@ -6,6 +6,7 @@ import { getLastResult, getHistory, getImprovementPlan, QuizResult, CategoryScor
 import { CATEGORY_LABELS, Category } from "@/lib/quizData";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, Legend } from "recharts";
 import { Download, ExternalLink, Heart, TrendingUp, Target, Calendar } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const BAND_COLORS: Record<string, string> = {
   Low: "text-green-600",
