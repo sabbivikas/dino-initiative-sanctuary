@@ -7,6 +7,7 @@ import { Question, SCALE_LABELS, SAFETY_QUESTION } from "@/lib/quizData";
 import { hasCompletedToday, selectDailyQuestions, generateAIQuestions, computeResult, saveResult } from "@/lib/quizUtils";
 import { AlertTriangle, Lock, ArrowRight, Heart, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import SEO from "@/components/SEO";
 
 const Quiz = () => {
   const navigate = useNavigate();
