@@ -175,7 +175,27 @@ const DinoStories = () => {
 
   return (
     <div className="bg-background">
-      {/* HERO — poster, no inline video */}
+      <SEO
+        title="Dino Stories — a gentle animated series"
+        description="Watch Dino Stories, a gentle animated series about noticing how you feel. Episode 1, The Storm Day, is streaming free."
+        path="/stories"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "TVSeries",
+          name: "Dino Stories",
+          description: "A gentle animated series from Dino Initiative about noticing how you feel.",
+          url: "https://dinoinitiative.com/stories",
+          numberOfEpisodes: episodes.length,
+          episode: episodes.map((ep) => ({
+            "@type": "TVEpisode",
+            episodeNumber: ep.id,
+            name: ep.title,
+            description: ep.description,
+            url: `https://dinoinitiative.com/stories?ep=${ep.id}`,
+          })),
+        }}
+      />
+
       <section className="border-b border-border bg-secondary/30">
         <div className="mx-auto max-w-5xl px-6 py-14 md:py-20 text-center">
           <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-primary">
