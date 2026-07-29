@@ -1,10 +1,17 @@
 import { Mail } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const Copyright = () => {
   return (
     <div className="mx-auto max-w-2xl px-6 py-16 md:py-24">
+      <SEO
+        title="Copyright and content usage"
+        description="Copyright and usage terms for the Dino app, Dino Initiative branding, illustrations, characters, and written content. How to request permission."
+        path="/copyright"
+      />
       <h1 className="mb-2 text-3xl font-bold md:text-4xl">Copyright</h1>
       <p className="mb-10 text-muted-foreground leading-relaxed">
+
         © 2026 Vikas Sabbi. All rights reserved.
       </p>
 
