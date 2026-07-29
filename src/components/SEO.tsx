@@ -33,7 +33,7 @@ const setMeta = (selector: string, attr: string, name: string, content: string) 
 
 const SEO = ({ title, description, path = "/", image = DEFAULT_IMAGE, type = "website", jsonLd }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
-  const fullTitle = title.includes("Dino Initiative") ? title : `${title} — Dino Initiative`;
+  const fullTitle = title.includes("Dino Initiative") ? title : `${title} | Dino Initiative`;
 
   useEffect(() => {
     document.title = fullTitle;
