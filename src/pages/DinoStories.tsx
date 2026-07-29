@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Play, X, Share2, Link as LinkIcon, Twitter, Facebook, MessageSquare, Instagram } from "lucide-react";
 import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import SEO from "@/components/SEO";
 
 type Episode = {
   id: number;
