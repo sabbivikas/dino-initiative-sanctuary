@@ -173,7 +173,12 @@ const Quiz = () => {
 
   return (
     <div className="mx-auto flex max-w-lg flex-col items-center px-6 py-16 md:py-24">
-      {/* Progress */}
+      <SEO
+        title="Daily wellbeing check-in quiz"
+        description="A short daily reflection quiz that helps you notice how you are doing across mood, stress, sleep, and connection, with a gentle report afterwards."
+        path="/quiz"
+      />
+
       <div className="mb-8 w-full">
         <div className="mb-2 flex items-center justify-between text-sm text-muted-foreground">
           <span>Question {currentIndex + 1} of {questions.length}</span>
