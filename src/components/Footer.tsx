@@ -41,7 +41,7 @@ const Footer = () => (
             <span className="text-base font-semibold tracking-tight">Dino Initiative</span>
           </Link>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            A gentle place to check in. Free mental wellness resources, made with care.
+            Personal intelligence for your everyday life. Built with care, starting with wellbeing.
           </p>
           <p className="mt-4 text-xs text-muted-foreground">
             Press &amp; partnerships:{" "}
