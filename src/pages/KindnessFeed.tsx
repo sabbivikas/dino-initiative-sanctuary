@@ -129,7 +129,13 @@ const KindnessFeed = () => {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+      <SEO
+        title="Kindness Letters — anonymous notes of encouragement"
+        description="Read and send anonymous letters of kindness, gentle notes of encouragement traveling between strangers around the world."
+        path="/kindness"
+      />
       <section className="mb-10 text-center">
+
         <h1 className="mb-3 text-3xl font-bold md:text-4xl">Kindness Letters</h1>
         <p className="text-muted-foreground">Anonymous letters of kindness, traveling across the world.</p>
         <div className="mt-6 flex justify-center gap-3">
