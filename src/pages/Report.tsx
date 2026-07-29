@@ -92,7 +92,12 @@ const Report = () => {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
-      {/* Export button */}
+      <SEO
+        title="Your wellbeing report"
+        description="See how your daily check-ins trend over time across mood, stress, sleep, and connection, with gentle suggestions for what might help next."
+        path="/report"
+      />
+
       <div className="mb-6 flex justify-end">
         <Button onClick={handleExportPdf} disabled={exporting} variant="outline" size="sm">
           <Download className="mr-2 h-4 w-4" />
